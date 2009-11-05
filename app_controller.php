@@ -44,14 +44,8 @@ class AppController extends Controller  {
 	}
 	
 	function __cats() {
-		$file = new File(CACHE.'/left_nav_cats.txt',true);
-		if ($file->exists()):
-			$data = $file->read();
-			$file->close();
-			$this->Session->write('NavCats', unserialize($data));
-		else:
-			$this->Session->write('NavCats', ClassRegistry::init('Setting')->getSettings());
-		endif;
+		$cats = ClassRegistry::init('Product')->cats(0);
+		$this->Session->write('NavCats', $cats);		
 	}
   
 	/**

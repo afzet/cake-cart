@@ -33,7 +33,7 @@ foreach ($cart['items'] as $item) {
 ?>
 	<tr>
 		<td><a href="/cart/delete/<?=$i?>" style="color:red" onclick="return confirm('Are you sure?');"><img src="/img/icons/bullet_delete.png" alt="Delete" valign="middle" align="left" /></a></td>
-		<td> <a href="/product_info/<?=$item['Product']['id']?>"><?=$item['Product']['product_name']?></a></td>
+		<td><?=$dojo->productLink($item)?><?=$item['Product']['product_name']?></a></td>
 	</tr>
 <? 
 	$i++;

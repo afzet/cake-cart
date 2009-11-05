@@ -53,10 +53,10 @@ if(isset($cart['items']) && count($cart['items'])!=0) {
 				
 				<td align="center" valign="middle" height="22"><a href="/cart/delete/'.$i.'" onclick="return confirm(\'Are you sure?\');"><img src="/img/icons/delete.png" alt="Delete" /></a></td>
 				<td valign="top">
-					<a href="/product_info/'.$item['Product']['id'].'">
+					'. $dojo->productLink($item) .'
 						<img src="'.$item['Product']['product_thumb'].'" align="left" alt="'.$item['Product']['id'].'" style="padding-right: 10px; width:40px; height: 40px;" />
 					</a>
-					<a href="/product_info/'.$item['Product']['id'].'">'.$item['Product']['product_name'].'</a><br />
+					'. $dojo->productLink($item) .''.$item['Product']['product_name'].'</a><br />
 					'.$item['Product']['product_code'].'
 				</td>
 				<td valign="top" style="text-align: right">$'.number_format($item['Product']['product_price'],2).'</td>
@@ -101,8 +101,8 @@ if(isset($cart['items']) && count($cart['items'])!=0) {
 	</tr>
 	<?php if(isset($cart['amt']['discount'])): ?>
 	<tr>
-		<td colspan="2" valign="middle" height="22" class="cart" style="text-align: right">Discount (<?=$cart['discount']['info']?>): </td>
-        <td valign="middle" class="cart" style="text-align: right">$<?=number_format($cart['amt']['discount'],2)?></td>
+		<td colspan="2" valign="middle" height="22" class="cart" style="text-align: right">Discount (<?=@$cart['discount']['info']?>): </td>
+        <td valign="middle" class="cart" style="text-align: right">$<?=number_format(@$cart['amt']['discount'],2)?></td>
 	</tr>
 	<?php endif; ?>
 	<tr>

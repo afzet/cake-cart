@@ -24,7 +24,7 @@ class Product extends AppModel {
 	
 	function cats ($id = 0) {
 		return $this->find('all', array(
-			'conditions' => array('Category.parent_id' => $id, 'Category.status' => 1),
+			'conditions' => array('Category.parent_id' => $id),
 			'fields' => array('Category.name','Category.id'),
 			'order' => array('Category.name' => 'ASC'),
 			'recursive' => 0,

@@ -171,7 +171,7 @@ class CartController extends AppController {
 	  			  		$cart['amt']['discount'] = number_format($cart['discount']['amount']*$cart['amt']['sub_total']);
 				}
 			else:
-				$cart['amt']['discount'] = number_format($cart['amt']['sub_total']);
+				$cart['amt']['discount'] = 0;
 			endif;
 			$rates = $this->__shippingRates($cart);
 			return $rates;

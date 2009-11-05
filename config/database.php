@@ -16,10 +16,10 @@ class DATABASE_CONFIG {
     var $default = array(
         'driver' => 'mysql',
         'connect' => 'mysql_connect',
-        'host' => 'mysql.sixninellc.com',
-        'login' => 'jonathanrbradley',
-        'password' => 'm3m0tyh',
-        'database' => 'pmansion_development'
+        'host' => 'localhost',
+        'login' => 'root',
+        'password' => '',
+        'database' => 'pmansion'
     );
 }
 

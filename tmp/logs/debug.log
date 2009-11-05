@@ -191,3 +191,5 @@
 2009-11-05 02:13:40 Debug: Notice (8): Undefined index: discount in [APP\views\cart\index.ctp, line 104]
 2009-11-05 02:26:28 Debug: Notice (8): Undefined variable: dojo in [APP\views\elements\product_view.ctp, line 32]
 2009-11-05 02:26:58 Debug: Notice (8): Undefined variable: form in [APP\views\elements\sidebar\newsletter.ctp, line 33]
+2009-11-05 02:55:03 Debug: Notice (8): Undefined index: discount in [APP\views\cart\index.ctp, line 104]
+2009-11-05 02:55:51 Debug: Notice (8): Undefined index: discount in [APP\views\cart\index.ctp, line 104]
