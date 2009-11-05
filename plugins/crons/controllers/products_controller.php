@@ -3,44 +3,43 @@
 class ProductsController extends CronsAppController {
     
 	var $uses = array('Product');
-	var $components = array('Crons.Download');
 	
 	function beforeFilter() {
 		$this->cron_path = APP . 'plugins' . DS . 'crons' . DS . 'files' . DS;
-    	$this->Download->fetch();
 	}
 	
-    function update() {
-    	$this->listFiles();
-    	die;
+	function update() {
+		$this->published();
+		$this->unpublish();
+		exit();
+	}
+	
+	function published() {
+		$path = $this->cron_path . DS . 'published' . DS;
+	    exec('wget http://www.sextoyclub.com/datafeeds/csv/InStock.csv -O ' . $path . 'instock.csv');
+	    $this->processCSV($path . 'instock.csv', 0);
+	    return true;
+	}
+	
+    function unpublish() {
+		$path = $this->cron_path . Ds . 'unpublish' . DS;
+	    exec('wget http://www.sextoyclub.com/datafeeds/csv/OutOfStock.csv -O ' . $path . 'outofstock.csv');
+	    exec('wget http://www.sextoyclub.com/datafeeds/csv/discontinued.csv -O ' . $path . 'discontinued.csv');
+	    $this->processCSV($path . 'outofstock.csv', 1);
+	    $this->processCSV($path . 'discontinued.csv', 1);
+	    return true;
     }
     
-    function listFiles() {
-		if (is_dir($this->cron_path)) {
-			if ($dh = opendir($this->cron_path)) {
-				while (($file = readdir($dh)) !== false) {
-					$type = filetype($this->cron_path . $file);
-					switch($type):
-						case 'file': 
-							$this->processCSV($file);
-							break;
-					endswitch;
-				}
-				closedir($dh);
-			}
-		}
-    }
-    
-    function processCSV($filename) {
-    	$handle = @fopen($this->cron_path . $filename, "r");
+    function processCSV($filename, $value) {
+    	$handle = @fopen($filename, "r");
 		while (($data = fgetcsv($handle, 1000, ",")) !== FALSE):
 			$product = $this->Product->find('first', array(
 					'conditions' => array('Product.product_code' => $data[0]),
 					'fields' => array('Product.id'),
-					'recursive' => 1
+					'recursive' => -1
 				));
 			$this->Product->id = $product['Product']['id'];
-			$this->Product->saveField('out_of_stock', 1);
+			$this->Product->saveField('out_of_stock', $value);
 		endwhile;
     }
 }
