@@ -1,0 +1,11 @@
+file:config.yaml
+purpose:test data for Array_Configuration_Yaml
+data:
+  -entry 1
+  -entry 2
+  -entry 3
+  -entry 4
+  -anArray:
+    id:1000
+    name:myArray
+    data:LLKAJSDF80-419435982123123
