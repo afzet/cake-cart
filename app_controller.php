@@ -13,7 +13,8 @@
  */
 class AppController extends Controller  {
 	
-	// var $components = array('DebugKit.Toolbar');  
+	var $components = array('DebugKit.Toolbar');  
+	var $helpers = array('Dojo', 'Html', 'Javascript', 'Form');
 	/**
 	 * Authentication Action
 	 * Validate Affiliate Access Authentication
@@ -145,4 +146,3 @@ class AppController extends Controller  {
 	}
 }
 ?>
-

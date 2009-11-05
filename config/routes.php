@@ -7,7 +7,7 @@
  * @lastmodified	$Date$
  */
 
-Router::parseExtensions('rss','xml');
+Router::parseExtensions('rss','xml','html');
 // Default
 Router::connect('/', 				array('controller' => 'default', 	'action' => 'index'));
 
@@ -19,9 +19,10 @@ Router::connect('/sitemap',         array('controller' => 'sitemap',    'action'
 Router::connect('/sitemap.xml',     array('controller' => 'sitemap',    'action' => 'index'));
 
 // Product View
-Router::connect('/product/view'	, 	array('controller' => 'product', 	'action' => 'index'));
-Router::connect('/product_info'	, 	array('controller' => 'product', 	'action' => 'index'));
-Router::connect('/product_info/*', 	array('controller' => 'product', 	'action' => 'view'));
+Router::connect('/p/view'	, 	array('controller' => 'product', 	'action' => 'index'));
+Router::connect('/p'	, 	array('controller' => 'product', 	'action' => 'index'));
+Router::connect('/p/*', 	array('controller' => 'product', 	'action' => 'view'));
+Router::connect('/c/*', 	array('controller' => 'category', 	'action' => 'view'));
 
 // Custom Error Message
 Router::connect('/404', 			array('controller' => 'pages', 		'action' => 'display', 'error'));

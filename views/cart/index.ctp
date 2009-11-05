@@ -54,7 +54,7 @@ if(isset($cart['items']) && count($cart['items'])!=0) {
 				<td align="center" valign="middle" height="22"><a href="/cart/delete/'.$i.'" onclick="return confirm(\'Are you sure?\');"><img src="/img/icons/delete.png" alt="Delete" /></a></td>
 				<td valign="top">
 					<a href="/product_info/'.$item['Product']['id'].'">
-						<img src="/img/items/thumbnails/'.$item['Product']['id'].'_1.jpg" align="left" alt="'.$item['Product']['id'].'" style="padding-right: 10px; width:40px; height: 40px;" />
+						<img src="'.$item['Product']['product_thumb'].'" align="left" alt="'.$item['Product']['id'].'" style="padding-right: 10px; width:40px; height: 40px;" />
 					</a>
 					<a href="/product_info/'.$item['Product']['id'].'">'.$item['Product']['product_name'].'</a><br />
 					'.$item['Product']['product_code'].'

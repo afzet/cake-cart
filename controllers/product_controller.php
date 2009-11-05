@@ -103,7 +103,7 @@ class ProductController extends AppController  {
 				$search['field']   = '';
 			}
 			$search['mainkeyword'] = Sanitize::clean(trim($this->params['url']['mainkeyword']));
-			$this->Session->write('Setarch', $search);			
+			$this->Session->write('Search', $search);			
 		}
 		else {
 			$search = $this->Session->read('Search');
@@ -122,7 +122,7 @@ class ProductController extends AppController  {
 		} else {
 			$this->paginate = array(
 				'conditions' => 
-					"Product.product_name $like || Product.product_code $like",
+					"Product.product_name $like || Product.product_code $like || Product.product_desc $like",
 			);	
 		}			
 			

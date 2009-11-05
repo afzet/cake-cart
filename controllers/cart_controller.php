@@ -29,6 +29,8 @@ class CartController extends AppController {
 	 * @access public
 	 */
 	public function index() {		
+		$cart = $this->Session->read('Cart');
+		$this->set(compact('cart'));
 	}
 
 	/**
@@ -115,6 +117,7 @@ class CartController extends AppController {
 	 */
 	public function add_country($id = null) {
 		// Set the country attribute to the cart.country object
+		if (!isset($this->cart)) $this->cart = $this->Session->read('Cart');
 		$this->cart['country'] = $id;				
 		
 		 // get the total prices for the cart and save the object
@@ -155,17 +158,21 @@ class CartController extends AppController {
 			}
 			$cart['amt']['sub_total'] = array_sum($prices);	
 			
-			switch ($cart['discount']['type']) {
-			  case 0:
-  			  if($cart['amt']['sub_total'] > $cart['discount']['amount']):
-  			    $cart['amt']['discount'] = $cart['discount']['amount'];
-  			  else:
-  			    $cart['amt']['discount'] = $cart['amt']['sub_total'];
-  			  endif;
-  			break;
-  			case 1:
-  			  $cart['amt']['discount'] = number_format($cart['discount']['amount']*$cart['amt']['sub_total']);
-			}
+			if (isset($cart['discount'])):
+				switch ($cart['discount']['type']) {
+				  	case 0:
+			  			  if($cart['amt']['sub_total'] > $cart['discount']['amount']):
+			  			    $cart['amt']['discount'] = $cart['discount']['amount'];
+			  			  else:
+			  			    $cart['amt']['discount'] = $cart['amt']['sub_total'];
+			  			  endif;
+	  				break;
+	  				case 1:
+	  			  		$cart['amt']['discount'] = number_format($cart['discount']['amount']*$cart['amt']['sub_total']);
+				}
+			else:
+				$cart['amt']['discount'] = number_format($cart['amt']['sub_total']);
+			endif;
 			$rates = $this->__shippingRates($cart);
 			return $rates;
 		}	

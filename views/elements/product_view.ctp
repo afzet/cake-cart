@@ -29,11 +29,9 @@ $i = 1;
 		else { $width = 100%$ttl.'%'; }
 		?>
 		<td valign="bottom" width="<?=$width?>" style="font-size: 10px; text-align:center; padding: 8px; border-right: 1px dotted #FCD6C4">
-			<a href="/product_info/<?=$product['Product']['id'];?>">
-				<img src="<?=$product['Product']['product_thumb'];?>" />				
-			</a>	
+			<?=$dojo->productLink($product);?><img src="<?=$product['Product']['product_thumb'];?>" /></a>	
 			<br />
-			<a href="/product_info/<?=$product['Product']['id'];?>">
+			<?=$dojo->productLink($product);?>
 				<strong><?=$product['Product']['product_name'];?></strong>
 			</a> 
 			<br /><br />

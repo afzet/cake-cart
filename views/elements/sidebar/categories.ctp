@@ -34,7 +34,7 @@
 		foreach ($session->read('NavCats') as $category) {
 			echo '
 			<li>
-				<a href="/category/view/'.$category['Category']['id'].'/'.urlencode($category['Category']['name']).'">
+				<a href="/c/'.$category['Category']['id'].'/'.urlencode($category['Category']['name']).'.html">
 					'.htmlspecialchars_decode($category['Category']['name']).'
 				</a>
 			</li>';
