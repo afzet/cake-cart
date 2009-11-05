@@ -21,7 +21,7 @@ class AppController extends Controller  {
 	 * @access public
 	 * @param array $data
 	 */
-	public function beforeFilter() {
+	public function beforeRender() {
 		$this->__cats();
 		$this->__checkCode();
 		// ClassRegistry::init('Product')->cats();

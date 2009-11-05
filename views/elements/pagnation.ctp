@@ -14,8 +14,10 @@
 ?> 
 <table border="0" cellspacing="5" cellpadding="5" style="border: 0;" width="100%">
 	<tr>
-		<td colspan="3" class="smaller"><?=$paginator->counter(array('format' => 'Page %page% of %pages%'))?></td>
-		<td colspan="12" class="smaller" style="text-align: right">
+		<td colspan="3" class="smaller">
+			<?=$paginator->counter(array('format' => 'Total Products: %count% <br /> Page %page% of %pages%'))?>
+		</td>
+		<td colspan="12" class="smaller" style="text-align: right" valign="bottom">
 			<?php
 				echo $paginator->prev('« Previous ', null, null, array('class' => 'disabled'));
 				echo '&nbsp;';
