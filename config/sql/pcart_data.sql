@@ -248,10 +248,10 @@ INSERT INTO countries (id, country, country_code, stc, xr, created) VALUES
 	
 
 INSERT INTO posts (id, page, title, body) VALUES
-(3, 'front', 'News &amp; Updates', 'Sed orci risus, varius interdum suscipit in, lacinia id enim. Proin ultricies leo ut lacus eleifend sodales. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec a tortor metus, non dictum orci. Sed at posuere mauris. Vivamus augue enim, facilisis et tempus vitae, pulvinar iaculis.');
+(3, 'front', 'News and Updates', 'Sed orci risus, varius interdum suscipit in, lacinia id enim. Proin ultricies leo ut lacus eleifend sodales. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec a tortor metus, non dictum orci. Sed at posuere mauris. Vivamus augue enim, facilisis et tempus vitae, pulvinar iaculis.');
 	
 	
-INSERT INTO settings (1, category, key, value) VALUES
+INSERT INTO settings (`id`, `category`, `key`, `value`) VALUES
 (1, 'site', 'keywords', ''),
 (2, 'site', 'description', ''),
 (3, 'site', 'copyright', 'Copyright 2010 South Florida Creations'),
