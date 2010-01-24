@@ -12,9 +12,9 @@ class FaqCategoriesController extends AppController {
 	var $helpers = array('Html', 'Form', 'Session' );
 	var $components = array('Auth');		
 	var $scaffold = 'admin';
-
     
 	function beforeFilter() {
+		parent::beforeFilter();
 		parent::adminLayout();
 	}
 }

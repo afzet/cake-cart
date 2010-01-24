@@ -11,7 +11,13 @@ class OrdersController extends PaypalAppController {
 	  */
 	function beforeFilter(){
 	  parent::beforeFilter();
-	  $this->Auth->allow('process');
+	  $this->Auth->allow('process','track');
+	}  
+	
+	function track() {
+		if(($this->params['url']['url'] = 'orders/track') == true) $data['tracking'] = $this->params['url'];
+		else $data['tracking'] = '';
+		$this->set('data',$data);
 	}
 	
 	/*****************

@@ -44,6 +44,7 @@ Router::connect('/admin/products/:action/*', array('admin' => 'true', 'controlle
 
 /* Paypal IPN plugin */
 Router::connect('/gateway/paypal/ipn', array('plugin' => 'paypal', 'controller' => 'orders', 'action' => 'process'));
+Router::connect('orders/track', array('plugin' => 'paypal', 'controller' => 'orders', 'action' => 'track'));
 Router::connect('/admin/orders/:action/*', array('admin' => 'true', 'plugin' => 'paypal', 'controller' => 'orders', 'action' => 'index'));
 Router::connect('/admin/contacts/:action/*', array('admin' => 'true', 'plugin' => 'contact', 'controller' => 'contacts', 'action' => 'index'));
 /* End Paypal IPN plugin */
