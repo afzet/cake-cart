@@ -16,15 +16,20 @@ class Category extends AppModel {
 	var $name = 'Category';
 	var $useTable = 'categories';
 	
+	var $belongsTo = array(
+		'Parent' => array(
+			'className' => 'Category',
+			'foreignKey' => 'parent_id',
+			'fields' => array('Parent.name', 'Parent.id')
+		)	
+	);
 	var $hasMany = array('Product');
 	
 	function nav_cats () {
 			$conditions = array(
 				'fields' => array('Category.name','Category.id'),
 				'recursive' => -1,
-				'conditions' => array(
-					'Category.parent_id' => 0
-				),
+				'conditions' => array('Category.parent_id' => 1),
 				'order' => array('Category.name ASC')
 			);		
 			return $this->find('all', $conditions);

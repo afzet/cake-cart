@@ -6,20 +6,22 @@ class DefaultController extends AppController  {
 	var $uses = array('Product', 'Post');
 	
 	function beforeFilter() {
+		parent::beforeFilter();
 		$this->Auth->allow('index');
 	}
 	
 	function beforeRender() {
-		$this->set('title_for_layout', $this->Session->read('Settings.site.title'));
+		parent::beforeRender();
 	}
 	
 	function index()  {		
 		$featured = $this->Product->featured();
-		$vibrators = $this->Product->vibrators();
+		$newest = $this->Product->newest();
 		$posts = $this->Post->newest();
 		$this->set('featured', $featured);
-		$this->set('vibrators', $vibrators);
+		$this->set('newest', $newest);
 		$this->set('post', $posts);
+		$this->set('title_for_layout', $this->Session->read('Settings.site.title'));
 	}	
 	
 }

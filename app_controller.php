@@ -14,7 +14,7 @@
 class AppController extends Controller  {
 	
 	var $components = array('Auth', 'DebugKit.Toolbar');  
-	var $helpers = array('Dojo', 'Html', 'Thumbnail', 'Javascript', 'Form', 'Time', 'Number');
+	var $helpers = array('Dojo', 'Html', 'Javascript', 'Form', 'Time', 'Number');
 	
 	function beforeFilter() {
 		$this->Session->write('Settings', ClassRegistry::init('Setting')->getSettings());
@@ -26,20 +26,24 @@ class AppController extends Controller  {
 	 * @access public
 	 * @param array $data
 	 */
-	public function beforeRender() {		
+	function beforeRender() {
 		$admin = Configure::read('Routing.admin');
-		if (isset($this->params[$admin]) && $this->params[$admin]): 
-			$this->layout = 'admin';
-		else: 
-			$this->Auth->allow();
-			self::__cats();
-			self::__checkCode();
+		if (!isset($this->params[$admin])) {
+			$this->__cats();
+			$this->__checkCode();
 			$this->set('searched', $this->Session->read('Search.recent'));
-		endif;
+		}
+	}	
+	
+	function isAuthorized() {
+		if($this->Auth->user()) {
+			$this->set('auth_user',$this->Auth->user());
+		}
 	}
 	
 	function adminLayout() {
-		if (preg_match('|'. Configure::read('Routing.admin') .'|', $this->params['url']['url'])) {
+		$admin = Configure::read('Routing.admin');
+		if (isset($this->params[$admin]) && $this->params[$admin]) {
 			$this->layout = 'admin';
 			if($this->Auth->user()) {
 				$this->set('auth_user',$this->Auth->user());
@@ -47,7 +51,7 @@ class AppController extends Controller  {
 		}
 	}
 	
-	public function checkBlock() {
+	function checkBlock() {
 		$blocked = ClassRegistry::init('Block')->find('all');
 		$info = $this->countryCityFromIP();
 		$state = preg_split('|, |',$info['city']);
@@ -64,7 +68,7 @@ class AppController extends Controller  {
 	
 	function __cats() {
 		$cats = ClassRegistry::init('Category')->nav_cats();
-		$this->Session->write('NavCats', $cats);		
+		$this->set('navCats', $cats);		
 	}
   
 	/**
@@ -74,7 +78,7 @@ class AppController extends Controller  {
 	 * @param array $data
 	 * @return boolean $code
 	 */
-	public function __createCode($data) {		
+	function __createCode($data) {		
 	    $hash  = sha1($data);  // hash data with sha1
 	    $hash2 = substr($hash, 0, 10);  // grab first 10 digits
 	    $hash3 = strtoupper($hash2);  // force uppercase of all values
@@ -87,7 +91,7 @@ class AppController extends Controller  {
 	 * @access public
 	 * @param array $data
 	 */
-	private function __createPassword() {
+	function __createPassword() {
   	$length = rand(6,12); // set length
 		$chars = "234567890abcdefghijkmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"; // set characters
 		$i = 0;
@@ -105,7 +109,7 @@ class AppController extends Controller  {
 	 * @access public
 	 * @param array $data
 	 */
-	public function __isAffiliate() {	
+	function __isAffiliate() {	
     // check if affiliate session information exists
 	  if(($affiliate = $this->Cookie->read('Affiliate')) == true) {
   	    return true;
@@ -139,7 +143,7 @@ class AppController extends Controller  {
 		}
 	}
 	
-	private function countryCityFromIP() {
+	function countryCityFromIP() {
 		if (!empty($_SERVER['HTTP_CLIENT_IP'])) $ipAddr = $_SERVER['HTTP_CLIENT_IP'];
 		elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) $ipAddr = $_SERVER['HTTP_X_FORWARDED_FOR'];
 		else $ipAddr = $_SERVER['REMOTE_ADDR'];

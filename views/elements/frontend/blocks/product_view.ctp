@@ -29,17 +29,17 @@ $i = 1;
 		else { $width = 100%$ttl.'%'; }
 		?>
 		<td valign="top" width="<?=$width?>" style="font-size: 10px; text-align:center; padding: 8px; border-right: 1px dotted #FCD6C4">
-			<?=$dojo->productLink($product);?><img src="<?=$dojo->imageFix($product['Product']['product_image']);?>" height="100" /></a>	
+			<?=$dojo->productLink($product);?><?php echo $html->image('products/'. $product['Image']['filename']);?></a>	
 			<br />
 			<?=$dojo->productLink($product);?>
-				<strong><?=$product['Product']['product_name'];?></strong>
+				<strong><?=$product['Product']['name'];?></strong>
 			</a> 
 			<br /><br />
-			<?=$dojo->productCode($product['Product']['product_code']);?>
+			<?=$dojo->productCode($product['Product']['model']);?>
 			<br />
-			<?=$product['Product']['product_list'];?>
+			<?=$product['Product']['desc'];?>
 			<br /><br />
-			Price: $<?=number_format($product['Product']['product_price'],2);?> 
+			Price: $<?=number_format($product['Product']['price'],2);?> 
 			<br /><br />								
 				<a href="/cart/add/<?=$product['Product']['id'];?>">
 					<img style="vertical-align: middle;" alt="" src="/img/buttons/cart.gif" border="0" />

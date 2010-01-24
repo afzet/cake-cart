@@ -55,7 +55,7 @@
 								<?php 
 									echo $this->element('frontend/blocks/cart');
 									if (!empty($searched)) echo $this->element('frontend/blocks/search');
-									echo $this->element('frontend/blocks/sidebar'); 
+									echo $this->element('frontend/blocks/sidebar', array('navCats' => $navCats)); 
 								?>
 							</td>
 							<td style="width: 10px" >&nbsp;</td>

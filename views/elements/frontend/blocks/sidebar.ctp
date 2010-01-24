@@ -14,7 +14,7 @@
 ?>
 
 <?php echo$this->element('frontend/modules/livezilla/live_support');?>
-<?php echo$this->element('frontend/blocks/categories');?>
+<?php echo$this->element('frontend/blocks/categories', array('navCats' => $navCats));?>
 <?php echo$this->element('frontend/blocks/subscribe', array('plugin' => 'newsletter'));?>
 <?php echo$this->element('frontend/blocks/extras');?>
 <?php echo$this->element('frontend/blocks/misc');?>

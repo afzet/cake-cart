@@ -13,19 +13,19 @@
  */
 class ProductController extends AppController  {
 	
-	var $name 		= 'Product'; 
-	var $uses = array('Product','Category','OrderItem');
-	var $helpers = array('Dojo');
-	var $components = array('Search');
-	var $paginate = array(
-	        	'limit' => 24,
-				'conditions' => array('Product.out_of_stock' => 0),
-    );
+	var $name = 'Product'; 
+	var $uses = array('Product', 'Category');
+	var $components = array('Search', 'FileHandler');
     var $scaffold = 'admin';
 	
 	function beforeFilter() {
+		parent::beforeFilter();
 		parent::adminLayout();
-		$this->Auth->allow('*');
+		$this->Auth->allow('view', 'search');
+	}
+	
+	function beforeRender() {
+		parent::beforeRender();
 	}
 	
 	function view($id = null)  {
@@ -53,7 +53,7 @@ class ProductController extends AppController  {
 		$this->pageTitle = 'Best Sellers - Passion Mansion Adult Sex Toys Store'; 	
 		$conditions = array(
 			'fields' => array(
-				'Product.product_name', 'Product.product_list', 'Product.product_cost', 'Product.out_of_stock',
+				'Product.product_name', 'Product.product_list', 'Product.product_cost', 'Product.status',
 				'Product.product_code', 'Product.product_price', 'Product.category_id', 'Product.product_thumb',
 				'Product.id'
 			),
@@ -70,10 +70,10 @@ class ProductController extends AppController  {
 			
 		
 		$conditions = array(
-			'conditions' => array('Product.out_of_stock' => 0),
+			'conditions' => array('Product.status' => 0),
 			'fields' => array(
-				'Product.product_name', 'Product.product_list', 'Product.product_cost', 'Product.out_of_stock',
-				'Product.product_code', 'Product.product_price', 'Product.category_id', 'Product.product_thumb',
+				'Product.name', 'Product.desc', 'Product.cost', 'Product.status',
+				'Product.model', 'Product.price', 'Product.category_id', 'Product.image',
 				'Product.id'
 			),
 			'recursive' => -1,
@@ -119,7 +119,6 @@ class ProductController extends AppController  {
 			$search = $this->Session->read('Search');
 		}
 			
-		//echo '<pre>'; print_r($search); die;
 		
 		$like   = "LIKE '%". urldecode($search['mainkeyword'])."%' ";
 		
@@ -127,13 +126,13 @@ class ProductController extends AppController  {
 			$this->paginate = array(
 				'conditions' => array(
 					'and' => array(
-						'Product.out_of_stock' => 0,
+						'Product.status' => 0,
 						"Product.".$search['field']." ".$like."",
 					)
 				),
 				'fields' => array(
-					'Product.product_name', 'Product.product_list',
-					'Product.product_code', 'Product.product_price',  'Product.product_thumb', 'Product.product_image',
+					'Product.name', 'Product.desc',
+					'Product.model', 'Product.price', 'Product.product_image',
 					'Product.id'
 				),
 				'recursive' => 1
@@ -143,17 +142,17 @@ class ProductController extends AppController  {
 			$this->paginate = array(
 				'conditions' => array(
 					'or' => array(
-						"Product.product_name $like",
-						"Product.product_code $like",
-						"Product.product_desc $like",
+						"Product.name $like",
+						"Product.model $like",
+						"Product.desc $like",
 					),
 					'and' => array(
-						'Product.out_of_stock' => 0	
+						'Product.status' => 0	
 					)
 				),
 				'fields' => array(
-					'Product.product_name', 'Product.product_list',
-					'Product.product_code', 'Product.product_price',  'Product.product_thumb', 'Product.product_image',
+					'Product.name', 'Product.desc',
+					'Product.model', 'Product.price', 'Product.image',
 					'Product.id'
 				),
 				'recursive' => 1
@@ -171,6 +170,41 @@ class ProductController extends AppController  {
 		$code = str_replace('CNV', '', $code);
 		$code = 'PM' . $code;
 		return $code;
+	}	
+	
+	function admin_add() {
+		if (!empty($this->data)) {
+			
+			$this->FileHandler->dbModel  = 'Image';
+			$image_id = $this->FileHandler->upload($this->data['Product'], 'image', PRODUCT_IMAGES); 
+			$this->data['Product']['image_id'] = $image_id;
+			if ($this->Product->save($this->data)) {
+				$this->redirect('index');
+			}
+		}
+		$this->set('categories', ClassRegistry::init('Category')->find('list'));
+	}
+	
+	function admin_edit($id = null) {
+		if (!empty($this->data)) {
+			if (!empty($this->data['Product']['image']['name'])) {
+				$this->FileHandler->dbModel  = 'Image';
+				$image_id = $this->FileHandler->upload($this->data['Product'], 'image', PRODUCT_IMAGES); 
+				$this->data['Product']['image_id'] = $image_id;
+			}
+			if ($this->Product->save($this->data['Product'])) {
+				$this->redirect('index');
+			}
+		}
+		if (!empty($id)) {
+			$this->data = $this->Product->find('first', array(
+				'conditions' => array('Product.id' => $id)
+			));
+		}
+		else {
+			$this->redirect('index');
+		}
+		$this->set('categories', ClassRegistry::init('Category')->find('list'));
 	}
 }
 ?>

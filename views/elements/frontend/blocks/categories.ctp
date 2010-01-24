@@ -30,7 +30,7 @@
 			 <ul>
 			 	
 		<?
-		foreach ($session->read('NavCats') as $category) {
+		foreach ($navCats as $category) {
 			echo '
 			<li>
 				<a href="/c/'.$category['Category']['id'].'/'.urlencode($category['Category']['name']).'.html">

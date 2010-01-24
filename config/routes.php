@@ -39,6 +39,7 @@ Router::connect('/newsletter/subscribe', array('plugin' => 'newsletter', 'contro
 
 
 Router::connect('/admin/categories/:action/*', array('admin' => 'true', 'controller' => 'category'));
+Router::connect('/admin/products/:action/*', array('admin' => 'true', 'controller' => 'product'));
 
 /* Paypal IPN plugin */
 Router::connect('/gateway/paypal/ipn', array('plugin' => 'paypal', 'controller' => 'orders', 'action' => 'process'));

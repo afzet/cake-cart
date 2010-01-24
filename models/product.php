@@ -4,21 +4,25 @@ class Product extends AppModel {
 
 	var $name = 'Product'; 
 	var $belongsTo = array('Category');
+	var $hasOne = array(
+		'Image' => array(
+			'className' => 'Image',
+			'foreignKey' => '',
+			'conditions' => array('Image.id' => 'Product.image_id'),
+			'fields' => array('Image.filename')
+		)
+	);
 	
 	var $fields = array(
-				'Product.out_of_stock', 'Product.product_name', 'Product.product_list', 'Product.product_cost',
-				'Product.product_code', 'Product.product_price', 'Product.category_id', 'Product.thumb', 'Product.product_image',
-				'Product.id'
+				'Product.name', 'Product.desc',
+				'Product.model', 'Product.price', 
+				'Product.id', 'Product.image_id',  'Image.filename'
 	);
 	
 	function batteries() {	
 		$conditions = array(
-			'conditions' => array('Product.category_id' => 55, 'Product.product_image !=""', 'Product.out_of_stock' => 0),
-			'fields' => array(
-				'Product.product_name', 'Product.product_list',
-				'Product.product_code', 'Product.product_price',  'Product.product_image', 
-				'Product.id'
-			),
+			'conditions' => array('Product.category_id' => 55, 'Product.status' => 1),
+			'fields' => $this->fields,
 			'order' => 'rand()',
 			'recursive' => 1,
 			'limit' => 4
@@ -47,57 +51,24 @@ class Product extends AppModel {
 	
 	function getRecommended ($data) {
 		return $this->find('all', array(
-			'conditions' => array('Product.category_id' => $data['Product']['category_id'], 'Product.product_image !=""', 'Product.out_of_stock' => 0),
-			'fields' => array(
-				'Product.product_name', 'Product.product_list',
-				'Product.product_code', 'Product.product_price',  'Product.product_image', 
-				'Product.id'
-			),
+			'conditions' => array('Product.category_id' => $data['Product']['category_id'], 'Product.status' => 1),
+			'fields' => $this->fields,
 			'recursive' => 1,
 			'limit' => 4,
 			'order' => 'rand()'
 		));
 	}
 	
-	function vibrators() {		
-		$conditions = array(
-			'conditions' => array('Category.parent_id' => 674, 'Product.product_image !=""', 'Product.out_of_stock' => 0),
-			'fields' => array(
-				'Product.product_name', 'Product.product_list',
-				'Product.product_code', 'Product.product_price',  'Product.product_image', 
-				'Product.id'
-			),
-			'order' => 'rand()',
-			'recursive' => 1,
-			'limit' => 48
-		);
-		$vibrators = $this->find('all', $conditions);
-		foreach ($vibrators as $key => $value):
-			if (parent::imageCheck($value['Product']['product_image']) == 0) {
-				unset($vibrators[$key]);
-			}
-		endforeach;
-		sort($vibrators);
-		foreach ($vibrators as $key => $value):
-			if ($key > 11) unset($vibrators[$key]);
-		endforeach;
-		return $vibrators;
-	}
-	
 	function featured() {
 		$featured = $this->find('all', array(
-			'conditions' => array('Category.parent_id' => 675, 'Product.out_of_stock' => 0, 'Product.product_image !=""'),
-			'fields' => array(
-				'Product.product_name', 'Product.product_list',
-				'Product.product_code', 'Product.product_price',  'Product.product_image', 
-				'Product.id'
-			),
+			'conditions' => array('Product.featured' => 1, 'Product.status' => 1),
+			'fields' => $this->fields,
 			'recursive' => 1,
 			'limit' => 48,
 			'order' => 'rand()'
 		));
 		foreach ($featured as $key => $value):
-			if (parent::imageCheck($value['Product']['product_image']) == 0) {
+			if (parent::imageCheck($value['Image']['filename']) == 0) {
 				unset($featured[$key]);
 			}
 		endforeach;
@@ -108,25 +79,24 @@ class Product extends AppModel {
 		return $featured;
 	}
 	
-	function newest() {	
-		$conditions = array(
-			'conditions' => array('Product.out_of_stock' => 0),
-			'order' => array('Product.created' => 'desc'),
+	function newest() {
+		$featured = $this->find('all', array(
+			'conditions' => array('Product.status' => 1),
 			'fields' => $this->fields,
-			'recursive' => -1,
-			'limit' => 8
-		);
-		return $this->find('all', $conditions);
-	}
-	
-	function popular() {
-		$conditions = array(
-			'conditions' => array('Product.out_of_stock' => 0, 'Product.product_image !=""', '1=1 GROUP BY Product.product_name'),
-			'order' => array('Product.viewed' => 'desc'),
 			'recursive' => 1,
-			'limit' => 8
-		);
-		return $this->find('all', $conditions);
+			'limit' => 48,
+			'order' => array('Product.id' => 'desc')
+		));
+		foreach ($featured as $key => $value):
+			if (parent::imageCheck($value['Image']['filename']) == 0) {
+				unset($featured[$key]);
+			}
+		endforeach;
+		sort($featured);
+		foreach ($featured as $key => $value):
+			if ($key > 11) unset($featured[$key]);
+		endforeach;
+		return $featured;
 	}
 }
 ?>
