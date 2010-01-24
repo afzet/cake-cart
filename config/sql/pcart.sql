@@ -1,5 +1,29 @@
+-- phpMyAdmin SQL Dump
+-- version 3.2.0.1
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Jan 24, 2010 at 09:39 AM
+-- Server version: 5.1.37
+-- PHP Version: 5.3.0
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: 'pcart_development'
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'accounts'
+--
 
 CREATE TABLE accounts (
   id int(10) NOT NULL AUTO_INCREMENT,
@@ -10,6 +34,17 @@ CREATE TABLE accounts (
   modified datetime DEFAULT NULL,
   PRIMARY KEY (id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table 'accounts'
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'affiliates'
+--
 
 CREATE TABLE affiliates (
   id int(10) NOT NULL AUTO_INCREMENT,
@@ -38,7 +73,16 @@ CREATE TABLE affiliates (
   PRIMARY KEY (id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table 'affiliates'
+--
 
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'blocks'
+--
 
 CREATE TABLE blocks (
   id int(10) NOT NULL AUTO_INCREMENT,
@@ -48,21 +92,53 @@ CREATE TABLE blocks (
   PRIMARY KEY (id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table 'blocks'
+--
 
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'categories'
+--
 
 CREATE TABLE categories (
-  id int(10) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) DEFAULT NULL,
-  parent_name varchar(100) DEFAULT NULL,
-  parent_id varchar(10) NOT NULL DEFAULT '0',
-  `status` int(1) DEFAULT '1',
-  created datetime NOT NULL,
-  modified datetime NOT NULL,
-  PRIMARY KEY (id),
-  KEY parent_id (parent_id)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
+  id int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
+  parent_id int(10) DEFAULT NULL,
+  lft int(10) DEFAULT NULL,
+  rght int(10) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (id)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table 'categories'
+--
 
+INSERT INTO categories (id, name, parent_id, lft, rght, status) VALUES
+(1, 'My Categories', NULL, 1, 30, 1),
+(2, 'Fun', 1, 2, 15, 1),
+(3, 'Sport', 2, 3, 8, 1),
+(4, 'Surfing', 3, 4, 5, 1),
+(5, 'Extreme knitting', 3, 6, 7, 1),
+(6, 'Friends', 2, 9, 14, 1),
+(7, 'Gerald', 6, 10, 11, 1),
+(8, 'Gwendolyn', 6, 12, 13, 1),
+(9, 'Work', 1, 16, 29, 1),
+(10, 'Reports', 9, 17, 22, 1),
+(11, 'Annual', 10, 18, 19, 1),
+(12, 'Status', 10, 20, 21, 1),
+(13, 'Trips', 9, 23, 28, 1),
+(14, 'National', 13, 24, 25, 1),
+(15, 'International', 13, 26, 27, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'contacts'
+--
 
 CREATE TABLE contacts (
   id int(11) NOT NULL AUTO_INCREMENT,
@@ -77,7 +153,16 @@ CREATE TABLE contacts (
   PRIMARY KEY (id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table 'contacts'
+--
 
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'countries'
+--
 
 CREATE TABLE countries (
   id int(10) NOT NULL DEFAULT '0',
@@ -89,7 +174,16 @@ CREATE TABLE countries (
   PRIMARY KEY (id)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table 'countries'
+--
 
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'faqs'
+--
 
 CREATE TABLE faqs (
   id int(10) NOT NULL AUTO_INCREMENT,
@@ -101,7 +195,16 @@ CREATE TABLE faqs (
   PRIMARY KEY (id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table 'faqs'
+--
 
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'faq_categories'
+--
 
 CREATE TABLE faq_categories (
   id int(10) NOT NULL AUTO_INCREMENT,
@@ -112,7 +215,16 @@ CREATE TABLE faq_categories (
   PRIMARY KEY (id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table 'faq_categories'
+--
 
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'groups'
+--
 
 CREATE TABLE groups (
   id int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -122,16 +234,33 @@ CREATE TABLE groups (
   PRIMARY KEY (id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table 'groups'
+--
 
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'images'
+--
 
 CREATE TABLE images (
-  id int(10) NOT NULL AUTO_INCREMENT,
-  width int(11) DEFAULT NULL,
-  height int(11) DEFAULT NULL,
+  id int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
   PRIMARY KEY (id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table 'images'
+--
 
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'newsletter_groups'
+--
 
 CREATE TABLE newsletter_groups (
   id int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -141,7 +270,16 @@ CREATE TABLE newsletter_groups (
   PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table 'newsletter_groups'
+--
 
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'newsletter_groups_mails'
+--
 
 CREATE TABLE newsletter_groups_mails (
   id int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -151,7 +289,16 @@ CREATE TABLE newsletter_groups_mails (
   KEY fk (newsletter_mail_id,newsletter_group_id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table 'newsletter_groups_mails'
+--
 
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'newsletter_groups_subscriptions'
+--
 
 CREATE TABLE newsletter_groups_subscriptions (
   id int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -161,7 +308,16 @@ CREATE TABLE newsletter_groups_subscriptions (
   KEY Foreign_Keys (newsletter_subscription_id,newsletter_group_id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table 'newsletter_groups_subscriptions'
+--
 
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'newsletter_mails'
+--
 
 CREATE TABLE newsletter_mails (
   id int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -177,7 +333,16 @@ CREATE TABLE newsletter_mails (
   PRIMARY KEY (id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table 'newsletter_mails'
+--
 
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'newsletter_mail_views'
+--
 
 CREATE TABLE newsletter_mail_views (
   id int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -188,7 +353,16 @@ CREATE TABLE newsletter_mail_views (
   KEY fk (newsletter_mail_id,ip)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table 'newsletter_mail_views'
+--
 
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'newsletter_subscriptions'
+--
 
 CREATE TABLE newsletter_subscriptions (
   id int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -202,7 +376,16 @@ CREATE TABLE newsletter_subscriptions (
   UNIQUE KEY email (email)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table 'newsletter_subscriptions'
+--
 
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'orders'
+--
 
 CREATE TABLE orders (
   id char(36) NOT NULL,
@@ -296,7 +479,16 @@ CREATE TABLE orders (
   PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table 'orders'
+--
 
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'order_items'
+--
 
 CREATE TABLE order_items (
   id varchar(36) NOT NULL,
@@ -313,16 +505,34 @@ CREATE TABLE order_items (
   PRIMARY KEY (id)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table 'order_items'
+--
 
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'posts'
+--
 
 CREATE TABLE posts (
   id int(10) NOT NULL AUTO_INCREMENT,
+  `page` varchar(100) DEFAULT NULL,
   title varchar(255) DEFAULT NULL,
   body text,
   PRIMARY KEY (id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table 'posts'
+--
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'presses'
+--
 
 CREATE TABLE presses (
   id int(10) NOT NULL AUTO_INCREMENT,
@@ -335,53 +545,46 @@ CREATE TABLE presses (
   PRIMARY KEY (id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table 'presses'
+--
 
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'products'
+--
 
 CREATE TABLE products (
   id int(10) NOT NULL AUTO_INCREMENT,
-  category_id varchar(255) DEFAULT NULL,
-  category_name varchar(255) DEFAULT NULL,
-  product_code varchar(255) DEFAULT NULL,
-  product_price decimal(7,2) DEFAULT NULL,
-  product_cost decimal(7,2) DEFAULT NULL,
-  product_suggested decimal(7,2) DEFAULT NULL,
-  product_name varchar(255) DEFAULT NULL,
-  new_name varchar(255) DEFAULT NULL,
-  xr_cost decimal(7,2) DEFAULT NULL,
-  product_desc text,
-  product_list text,
-  product_length varchar(255) DEFAULT NULL,
-  product_width varchar(255) DEFAULT NULL,
-  product_circum varchar(255) DEFAULT NULL,
-  product_size varchar(255) DEFAULT NULL,
-  product_color varchar(255) DEFAULT NULL,
-  product_power varchar(255) DEFAULT NULL,
-  product_vibe varchar(255) DEFAULT NULL,
-  product_gender varchar(255) DEFAULT NULL,
-  product_material varchar(255) DEFAULT NULL,
-  product_shape varchar(255) DEFAULT NULL,
-  product_features varchar(255) DEFAULT NULL,
-  product_body varchar(255) DEFAULT NULL,
-  pm_image varchar(255) DEFAULT NULL,
-  product_image varchar(255) DEFAULT NULL,
-  product_thumb varchar(255) DEFAULT NULL,
-  product_image2 varchar(255) DEFAULT NULL,
-  product_thumb2 varchar(255) DEFAULT NULL,
-  product_flavor varchar(255) DEFAULT NULL,
-  product_star varchar(255) DEFAULT NULL,
-  product_vendor varchar(255) DEFAULT NULL,
-  product_manf varchar(255) DEFAULT NULL,
-  product_upc varchar(255) DEFAULT NULL,
-  product_weight varchar(255) DEFAULT NULL,
-  viewed int(20) DEFAULT NULL,
-  out_of_stock varchar(255) DEFAULT '0',
-  created datetime DEFAULT NULL,
-  modified varchar(255) DEFAULT NULL,
+  category_id int(20) DEFAULT NULL,
+  image_id int(20) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  model varchar(255) DEFAULT NULL,
+  cost decimal(7,2) DEFAULT NULL,
+  price decimal(7,2) DEFAULT NULL,
+  length varchar(255) DEFAULT NULL,
+  `desc` text,
+  upc varchar(255) DEFAULT NULL,
+  width varchar(255) DEFAULT NULL,
+  height varchar(255) DEFAULT NULL,
+  weight varchar(255) DEFAULT NULL,
+  manufacturer varchar(255) DEFAULT NULL,
+  featured tinyint(1) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT '0',
   PRIMARY KEY (id),
-  FULLTEXT KEY product_name (product_name,product_desc,product_list,product_code,product_star)
+  FULLTEXT KEY product_name (`name`,`desc`,model)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table 'products'
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'promos'
+--
 
 CREATE TABLE promos (
   id int(10) NOT NULL AUTO_INCREMENT,
@@ -399,7 +602,16 @@ CREATE TABLE promos (
   PRIMARY KEY (id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table 'promos'
+--
 
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'ratings'
+--
 
 CREATE TABLE ratings (
   id int(10) NOT NULL AUTO_INCREMENT,
@@ -411,7 +623,16 @@ CREATE TABLE ratings (
   PRIMARY KEY (id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table 'ratings'
+--
 
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'settings'
+--
 
 CREATE TABLE settings (
   id int(10) NOT NULL AUTO_INCREMENT,
@@ -421,7 +642,16 @@ CREATE TABLE settings (
   PRIMARY KEY (id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table 'settings'
+--
 
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'users'
+--
 
 CREATE TABLE users (
   id int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -430,17 +660,32 @@ CREATE TABLE users (
   username varchar(50) DEFAULT NULL,
   email varchar(100) NOT NULL,
   `password` varchar(64) NOT NULL,
-  group_id int(10) unsigned NOT NULL,
   active tinyint(1) unsigned NOT NULL,
   created datetime DEFAULT NULL,
   modified datetime DEFAULT NULL,
-  PRIMARY KEY (id),
-  KEY group_id (group_id)
+  PRIMARY KEY (id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table 'users'
+--
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'weights'
+--
 
 CREATE TABLE weights (
   product_code varchar(255) DEFAULT NULL,
   weight varchar(255) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table 'weights'
+--
+
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

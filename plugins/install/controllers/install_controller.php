@@ -41,7 +41,6 @@ class InstallController extends InstallAppController {
     function beforeFilter() {
         parent::beforeFilter();
 
-        $this->layout = 'install';
         App::import('Component', 'Session');
         $this->Session = new SessionComponent;
     }
@@ -54,6 +53,7 @@ class InstallController extends InstallAppController {
  */
     function index() {
         $this->pageTitle = __('Installation: Welcome', true);
+		$this->set('title_for_layout', $this->pageTitle);
     }
 /**
  * Step 1: database
@@ -62,6 +62,7 @@ class InstallController extends InstallAppController {
  */
     function database() {
         $this->pageTitle = __('Step 1: Database', true);
+		$this->set('title_for_layout', $this->pageTitle);
         if (!empty($this->data)) {
             // test database connection
             if (mysql_connect($this->data['Install']['host'], $this->data['Install']['login'], $this->data['Install']['password']) &&
@@ -96,6 +97,7 @@ class InstallController extends InstallAppController {
  */
     function data() {
         $this->pageTitle = __('Step 2: Run SQL', true);
+		$this->set('title_for_layout', $this->pageTitle);
         //App::import('Core', 'Model');
         //$Model = new Model;
 
@@ -107,8 +109,8 @@ class InstallController extends InstallAppController {
             if(!$db->isConnected()) {
                 $this->Session->setFlash(__('Could not connect to database.', true));
             } else {
-                $this->__executeSQLScript($db, CONFIGS.'sql'.DS.'croogo.sql');
-                $this->__executeSQLScript($db, CONFIGS.'sql'.DS.'croogo_data.sql');
+                $this->__executeSQLScript($db, CONFIGS.'sql'.DS.'pcart.sql');
+                $this->__executeSQLScript($db, CONFIGS.'sql'.DS.'pcart_data.sql');
 
                 $this->redirect(array('action' => 'finish'));
             }
@@ -123,6 +125,7 @@ class InstallController extends InstallAppController {
  */
     function finish() {
         $this->pageTitle = __('Installation completed successfully', true);
+		$this->set('title_for_layout', $this->pageTitle);
 
         if (isset($this->params['named']['delete'])) {
             App::import('Core', 'Folder');

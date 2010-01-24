@@ -19,14 +19,7 @@ class AppController extends Controller  {
 	function beforeFilter() {
 		$this->Session->write('Settings', ClassRegistry::init('Setting')->getSettings());
 		$this->Auth->autoRedirect = false;
-	}
-	/**
-	 * Authentication Action
-	 * Validate Affiliate Access Authentication
-	 * @access public
-	 * @param array $data
-	 */
-	function beforeRender() {
+		
 		$admin = Configure::read('Routing.admin');
 		if (!isset($this->params[$admin])) {
 			$this->__cats();

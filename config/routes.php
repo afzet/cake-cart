@@ -1,13 +1,14 @@
 <?php
-require_once APP.'config'.DS.'croogo_router.php';
-CroogoRouter::plugins();
 
-// Installer
-if (!file_exists(APP.'config'.DS.'database.php')) {
-    CroogoRouter::connect('/', array('plugin' => 'install' ,'controller' => 'install'));
-}
+    require_once APP.'config'.DS.'croogo_router.php';
+    CroogoRouter::plugins();
+    Router::parseExtensions('json', 'rss');
 
-Router::parseExtensions('json', 'rss','xml','html');
+    // Installer
+    if (!file_exists(APP.'config'.DS.'database.php')) {
+        CroogoRouter::connect('/', array('plugin' => 'install' ,'controller' => 'install'));
+    }
+
 
 Router::connect('/contact', array('plugin' => 'contact', 'controller' => 'contacts', 'action' => 'add'));
 Router::connect('/contact/thanks', array('plugin' => 'contact', 'controller' => 'contacts', 'action' => 'thanks'));
