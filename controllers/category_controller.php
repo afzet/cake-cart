@@ -18,7 +18,7 @@ class CategoryController extends AppController {
 	var $scaffold = 'admin';
 		
 	function beforeFilter() {
-		parent::adminLayout();
+		parent::beforeFilter();
 		$this->Auth->allow('view');
 	}
 		
@@ -41,8 +41,7 @@ class CategoryController extends AppController {
 			$conditions = array(
 				'and' => array(
 					'Product.category_id IN ('.$_cats.')',
-					'Product.out_of_stock' => 0,
-					'Product.product_image !=""'
+					'Product.status' => 1,
 				)
 			);				
 			$this->set('cats',$cats);
@@ -54,8 +53,7 @@ class CategoryController extends AppController {
 					'Category.parent_id' => $id
 				),
 				'and' => array(
-					'Product.out_of_stock' => 0,
-					'Product.product_image !=""'
+					'Product.status' => 1,
 				)
 			);
 			$cats = ClassRegistry::init('Product')->cats($category['Category']['id']);
@@ -68,8 +66,8 @@ class CategoryController extends AppController {
 				'conditions' => $conditions,
 				'limit' => 24,
 				'fields' => array(
-					'Product.out_of_stock', 'Product.product_name', 'Product.product_list', 'Product.product_thumb',
-					'Product.product_cost', 'Product.product_code', 'Product.product_price', 'Product.product_image',
+					'Product.status', 'Product.name', 'Product.desc', 'Image.name',
+					'Product.cost', 'Product.model', 'Product.price',
 					'Product.category_id', 'Product.id', 'Category.name'
 				),
 				'recursive' => 0

@@ -3,12 +3,12 @@
 class UsersController extends AppController 
 {
 	var $name = 'Users';
-	var $helpers = array('Html', 'Form', 'Session');
 	var $uses = array('User');
 	var $scaffold = 'admin';
+	var $layout = 'admin';
 	
-	function beforeFilter() {
-		parent::adminLayout();
+	function beforeFilter() {		
+		parent::beforeFilter();
 	}
 	
 	function admin_login() {

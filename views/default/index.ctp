@@ -53,4 +53,4 @@
 		</td>
 	</tr>
 </table>
-<?=$this->renderElement('product_view', array('data' => $featured));?>
+<?php echo $this->element('frontend/blocks/product_view', array('data' => $featured));?>

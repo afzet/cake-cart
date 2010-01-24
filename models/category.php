@@ -29,7 +29,7 @@ class Category extends AppModel {
 			$conditions = array(
 				'fields' => array('Category.name','Category.id'),
 				'recursive' => -1,
-				'conditions' => array('Category.parent_id' => 1),
+				'conditions' => array('Category.parent_id !=' => null),
 				'order' => array('Category.name ASC')
 			);		
 			return $this->find('all', $conditions);
