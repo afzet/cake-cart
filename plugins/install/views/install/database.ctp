@@ -5,7 +5,7 @@
         echo $form->input('Install.host', array('label' => 'Host', 'value' => 'localhost'));
         echo $form->input('Install.login', array('label' => 'User / Login', 'value' => 'root'));
         echo $form->input('Install.password', array('label' => 'Password'));
-        echo $form->input('Install.database', array('label' => 'Name', 'value' => 'croogo'));
+        echo $form->input('Install.database', array('label' => 'Name', 'value' => 'pcart'));
         echo $form->end('Submit');
     ?>
 </div>

@@ -1,3 +1,4 @@
 config/database.php
 tmp/sessions/*
-webroot/img/products
+webroot/img/products/*
+plugins/debug_kit
