@@ -2,3 +2,4 @@
 2010-01-24 10:33:38 Debug: Notice (8): Undefined index: Statuses in [APP\controllers\tweets_controller.php, line 16]
 2010-01-24 10:34:44 Debug: Notice (8): Undefined variable: navCats in [APP\views\layouts\default.ctp, line 58]
 2010-01-24 10:34:44 Debug: Notice (8): Undefined variable: navCats in [APP\views\layouts\default.ctp, line 58]
+2010-01-24 10:37:00 Debug: Notice (8): Undefined variable: navCats in [APP\views\layouts\default.ctp, line 58]

@@ -1,3 +1,4 @@
 2010-01-24 10:33:38 Warning: Warning (2): Invalid argument supplied for foreach() in [APP\views\tweets\index.ctp, line 21]
 2010-01-24 10:34:44 Warning: Warning (2): Invalid argument supplied for foreach() in [APP\views\elements\frontend\blocks\categories.ctp, line 33]
 2010-01-24 10:34:44 Warning: Warning (2): Invalid argument supplied for foreach() in [APP\views\elements\frontend\blocks\categories.ctp, line 33]
+2010-01-24 10:37:00 Warning: Warning (2): Invalid argument supplied for foreach() in [APP\views\elements\frontend\blocks\categories.ctp, line 33]
