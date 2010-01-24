@@ -12,11 +12,11 @@
  * Modified By: $LastChangedBy: jonathan $
  */
  ?>
- <div style="background-color: rgb(252, 214, 196); height: 28px; width: auto; padding-left: 12px; padding-right: 12px; padding-top: 6px;">
+ <div style="background-color: #fed4cb; height: 28px; width: auto; padding-left: 12px; padding-right: 12px; padding-top: 6px;">
 	<table width="100%" cellspacing="0" cellpadding="0">
 		<tr>
 			<td>
-				<div style="font-size: 16px; font-family: Arial; color: rgb(243, 107, 43); font-weight: bold;">
+				<div style="font-size: 16px; font-family: Arial; color: #f96444; font-weight: bold;">
 					Newsletter Signup
 				</div>				
 			</td>
@@ -30,7 +30,7 @@
 		submit your email below. <br />	 <br />	
 		<?
 		echo $form->create('Subscriber', array('url' => '/newsletter/signup'));
-    echo $form->input('Subscriber.email', array('class'=>'contact', 'label'=>'Please enter your email'));
+    echo $form->input('Subscriber.email', array('class'=>'contact', 'label'=>'Please enter your email', 'class' => 'contact'));
 		echo $form->submit('buttons/signup.gif');
     echo $form->end();
 		?>

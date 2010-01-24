@@ -1,16 +1,5 @@
 <?php
-/**
- * SVN FILE: $Id: product.php 89 2008-08-19 08:58:53Z jonathan $
- *
- * Product Model
- *
- * @package pmCart
- * @author Jonathan Bradley <jonathan@passionmansion.com>
- * @copyright Copyright 2008, Passion Mansion, Inc.
- * @version $Revision: 89 $
- * Last Modified: $Date: 2008-08-19 04:58:53 -0400 (Tue, 19 Aug 2008) $
- * Modified By: $LastChangedBy: jonathan $
- */
+
 class Product extends AppModel {
 
 	var $name = 'Product'; 
@@ -21,6 +10,21 @@ class Product extends AppModel {
 				'Product.product_code', 'Product.product_price', 'Product.category_id', 'Product.thumb', 'Product.product_image',
 				'Product.id'
 	);
+	
+	function batteries() {	
+		$conditions = array(
+			'conditions' => array('Product.category_id' => 55, 'Product.product_image !=""', 'Product.out_of_stock' => 0),
+			'fields' => array(
+				'Product.product_name', 'Product.product_list',
+				'Product.product_code', 'Product.product_price',  'Product.product_image', 
+				'Product.id'
+			),
+			'order' => 'rand()',
+			'recursive' => 1,
+			'limit' => 4
+		);
+		return $this->find('all', $conditions);
+	}
 	
 	function cats ($id = 0) {
 		return $this->find('all', array(
@@ -75,7 +79,7 @@ class Product extends AppModel {
 		endforeach;
 		sort($vibrators);
 		foreach ($vibrators as $key => $value):
-			if ($key > 7) unset($vibrators[$key]);
+			if ($key > 11) unset($vibrators[$key]);
 		endforeach;
 		return $vibrators;
 	}
@@ -99,7 +103,7 @@ class Product extends AppModel {
 		endforeach;
 		sort($featured);
 		foreach ($featured as $key => $value):
-			if ($key > 7) unset($featured[$key]);
+			if ($key > 11) unset($featured[$key]);
 		endforeach;
 		return $featured;
 	}

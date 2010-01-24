@@ -16,11 +16,11 @@
 $currentUrl = isset($this->params['pass'])?$this->params['pass']:array();
 $paginator->options(array('url' => $currentUrl));
 ?>
-<div style="background-color: rgb(252, 214, 196); height: 28px; width: auto; padding-left: 12px; padding-right: 12px; padding-top: 6px;">
+<div style="background-color: #fed4cb; height: 28px; width: auto; padding-left: 12px; padding-right: 12px; padding-top: 6px;">
 	<table width="100%" cellspacing="0" cellpadding="0">
 		<tr>
 			<td>
-				<div style="font-size: 16px; font-family: Arial; color: rgb(243, 107, 43); font-weight: bold;">
+				<div style="font-size: 16px; font-family: Arial; color: #f96444; font-weight: bold;">
 					Press
 				</div>				
 			</td>

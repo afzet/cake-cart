@@ -12,12 +12,12 @@
  * Modified By: $LastChangedBy: jonathan $
  */
  ?>
-<div style="background-color: rgb(252, 214, 196); height: 28px; width: auto; padding-left: 12px; padding-right: 12px; padding-top: 6px;">
+<div style="background-color: #fed4cb; height: 28px; width: auto; padding-left: 12px; padding-right: 12px; padding-top: 6px;">
 	<table width="100%" cellspacing="0" cellpadding="0">
 		<tr>
 			<td>
-				<div style="font-size: 16px; font-family: Arial; color: rgb(243, 107, 43); font-weight: bold;">
-					Acknowlegements		
+				<div style="font-size: 16px; font-family: Arial; color: #f96444; font-weight: bold;">
+					Aknowledgements		
 				</div>				
 			</td>
 			<td align="right">&nbsp;</td>
@@ -27,6 +27,31 @@
 
 <div style="padding: 10px;">
   <p>
-    <strong>Mark Story</strong> - Mark a core developer for the CakePHP project was not only helpful but the most vital resouce for questions and advice while developing this website. His indepth knowledge of CakePHP and PHP enabled us to develop a reliable platform to enable the best user experiance we can offer.
+  	Passion Mansion would like to thank markstory of the CakePHP development team for his constant advice, and support while developing this software. Without his help our Creative Developer, Jonathan Bradley stated the following, "With out the advice and always available technical support in regards to questions and advice from Mark, Passion Mansion would not be where it is today".
+  </p>
+  <br />
+  <p>
+  	On behalf of Passion Mansion and its founders, we thank the CakePHP Development Team and markstory personally for creating a MVC Framework that made all of this possible
+  </p>
+  <br />
+  <p>
+  	Thank you, <br />
+  	Management
   </p>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

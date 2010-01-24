@@ -18,10 +18,10 @@
 body {  font-size: 11px; color: #424242; font-style: normal; font-family: "verdana"; text-decoration: none;  letter-spacing: 0; background: url('/img/bg.gif');background-color:#ffffff; margin-bottom: 0; padding-bottom: 0;}
 td { font-size: 11px; color: #424242; font-style: normal; font-family: "verdana"; text-decoration: none; letter-spacing: 0 }
 a { line-height: 1;}
-a:active { text-decoration: none; color: #f36b2b; }
-a:visited { text-decoration: none; color: #f36b2b; }
-a:link {  text-decoration: none; color: #f36b2b;}
-a:hover { text-decoration: underline; color: #f36b2b; }
+a:active { text-decoration: none; color: #f96444; }
+a:visited { text-decoration: none; color: #f96444; }
+a:link {  text-decoration: none; color: #f96444;}
+a:hover { text-decoration: underline; color: #f96444; }
 .link1 { color: #ffffff; }
 .link1:visited { text-decoration: none; color: #ffffff; }
 .link1:link {  text-decoration: none; color: #ffffff;}
@@ -36,26 +36,26 @@ a.white:link {  text-decoration: none; color: #ffffff; }
 a.white:hover { text-decoration: underline; color: #ffffff; }
 .small { font-size: 11px;}
 .smaller { font-size: 11px; }
-.orange { color:#f36b2b; }
+.orange { color:#f96444; }
 .gri { color: #2f2f2f;}
 .para {padding: 11px;}
 a.gri:active { text-decoration: none; color: #2f2f2f; }
 a.gri:visited { text-decoration: none; color: #2f2f2f; }
 a.gri:link {  text-decoration: none; color: #2f2f2f; }
-a.gri:hover { text-decoration: underline; color: #f36b2b; }
-.t30 { font-size:24px; color:#f36b2b; font-weight:bold; }
-.t14 { font-size:15px; color:#f36b2b; font-weight:bold; }
-.t10 { font-size:12px; color:#f36b2b; font-weight:bold; }
-.t11 { font-size:12px; color:#f36b2b;}
+a.gri:hover { text-decoration: underline; color: #f96444; }
+.t30 { font-size:24px; color:#f96444; font-weight:bold; }
+.t14 { font-size:15px; color:#f96444; font-weight:bold; }
+.t10 { font-size:12px; color:#f96444; font-weight:bold; }
+.t11 { font-size:12px; color:#f96444;}
 .ti13 { font-size:13px; }
-.catorange { font-size:14px; color:#f36b2b; font-weight:bold; }
-.catorange_two { font-size:12px; color:#f36b2b; font-weight:bold;}
+.catorange { font-size:14px; color:#f96444; font-weight:bold; }
+.catorange_two { font-size:12px; color:#f96444; font-weight:bold;}
 .quicklinks { font-size:12px; line-height: 1.1;color:#000000; font-weight:normal;}
-.quicklinks a { font-size:12px; color:#f36b2b; font-weight:normal; }
-.quicklinks a:active { text-decoration: underline; color: #f36b2b; }
-.quicklinks a:visited { text-decoration: underline; color: #f36b2b; }
-.quicklinks a:link {  text-decoration: underline; color: #f36b2b;}
-.quicklinks a:hover { text-decoration: underline; color: #f36b2b;}
+.quicklinks a { font-size:12px; color:#f96444; font-weight:normal; }
+.quicklinks a:active { text-decoration: underline; color: #f96444; }
+.quicklinks a:visited { text-decoration: underline; color: #f96444; }
+.quicklinks a:link {  text-decoration: underline; color: #f96444;}
+.quicklinks a:hover { text-decoration: underline; color: #f96444;}
 .quicklinkstr { height: 1px; color: #ddd; background-color: #ddd; width:90%}
 .link1 { color: #ffffff;}
 .link1:visited { text-decoration: none; color: #ffffff;}

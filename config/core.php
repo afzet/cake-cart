@@ -23,7 +23,7 @@
  * In production mode, flash messages redirect after a time interval.
  * In development mode, you need to click the flash message to continue.
  */
-	Configure::write('debug', 0);
+	Configure::write('debug', 2);
 /**
  * Application wide charset encoding
  */
@@ -49,13 +49,13 @@
  * 'admin' 		-> admin_index() and /admin/controller/index
  * 'superuser' -> superuser_index() and /superuser/controller/index
  */
-	//Configure::write('Routing.admin', 'admin');
+	Configure::write('Routing.admin', 'admin');
 
 /**
  * Turn off all caching application-wide.
  *
  */
-	Configure::write('Cache.disable', false);
+	Configure::write('Cache.disable', true);
 /**
  * Enable cache checking.
  *
@@ -65,7 +65,7 @@
  * or in each action using $this->cacheAction = true.
  *
  */
-	Configure::write('Cache.check', true);
+	Configure::write('Cache.check', false);
 /**
  * Defines the default error type when using the log() function. Used for
  * differentiating error logging and debugging. Currently PHP supports LOG_DEBUG.
@@ -85,7 +85,7 @@
  * To use database sessions, execute the SQL file found at /app/config/sql/sessions.sql.
  *
  */
-	Configure::write('Session.save', 'cake');
+	Configure::write('Session.save', 'php');
 /**
  * The name of the table used to store CakePHP database sessions.
  *
@@ -93,17 +93,17 @@
  *
  * The table name set here should *not* include any table prefix defined elsewhere.
  */
-	Configure::write('Session.table', 'sessions');
+	// Configure::write('Session.table', 'sessions');
 /**
  * The DATABASE_CONFIG::$var to use for database session handling.
  *
  * 'Session.save' must be set to 'database' in order to utilize this constant.
  */
-	Configure::write('Session.database', 'default');
+	// Configure::write('Session.database', 'default');
 /**
  * The name of CakePHP's session cookie.
  */
-	Configure::write('Session.cookie', 'passion');
+	Configure::write('Session.cookie', 'PCART');
 /**
  * Session time out time (in seconds).
  * Actual value depends on 'Security.level' setting.

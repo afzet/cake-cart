@@ -13,20 +13,38 @@
  */
 class AppController extends Controller  {
 	
-	// var $components = array('DebugKit.Toolbar');  
-	var $helpers = array('Dojo', 'Html', 'Thumbnail', 'Javascript', 'Form');
+	var $components = array('Auth', 'DebugKit.Toolbar');  
+	var $helpers = array('Dojo', 'Html', 'Thumbnail', 'Javascript', 'Form', 'Time', 'Number');
+	
+	function beforeFilter() {
+		$this->Session->write('Settings', ClassRegistry::init('Setting')->getSettings());
+		$this->Auth->autoRedirect = false;
+	}
 	/**
 	 * Authentication Action
 	 * Validate Affiliate Access Authentication
 	 * @access public
 	 * @param array $data
 	 */
-	public function beforeRender() {
-		$this->__cats();
-		$this->__checkCode();
-		// ClassRegistry::init('Product')->cats();
-		$this->set('searched', $this->Session->read('Search.recent'));
-		$this->Session->write('Settings', ClassRegistry::init('Setting')->getSettings());
+	public function beforeRender() {		
+		$admin = Configure::read('Routing.admin');
+		if (isset($this->params[$admin]) && $this->params[$admin]): 
+			$this->layout = 'admin';
+		else: 
+			$this->Auth->allow();
+			self::__cats();
+			self::__checkCode();
+			$this->set('searched', $this->Session->read('Search.recent'));
+		endif;
+	}
+	
+	function adminLayout() {
+		if (preg_match('|'. Configure::read('Routing.admin') .'|', $this->params['url']['url'])) {
+			$this->layout = 'admin';
+			if($this->Auth->user()) {
+				$this->set('auth_user',$this->Auth->user());
+			}
+		}
 	}
 	
 	public function checkBlock() {
@@ -45,7 +63,7 @@ class AppController extends Controller  {
 	}
 	
 	function __cats() {
-		$cats = ClassRegistry::init('Product')->cats(0);
+		$cats = ClassRegistry::init('Category')->nav_cats();
 		$this->Session->write('NavCats', $cats);		
 	}
   
@@ -104,26 +122,23 @@ class AppController extends Controller  {
 	 * @access public
 	 * @param array $data
 	 */
-	public function __emailInfo() {	  
-    $this->Email->replyTo = 'info@passionmansion.com';  // set replyTo address
-    $this->Email->from 		= 'Passion Mansion <info@passionmansion.com>';  // set from address		
-    $this->Email->smtpOptions = array(
-  		'port'=>'25', // set port
-		  'timeout'=>'30', // set timeout
-		  'host' => 'smtp.1and1.com', // set smtp host
-		  'username'=>'jonathan@passionmansion.com', // set smtp auth username
-		  'password'=>'m3m0tyh' // set smtp auth password
-		);		
-    $this->Email->sendAs 	= 'html'; // set email format
-	$this->Email->delivery = 'smtp'; // set email send method
+	function sendEmail($subject, $view, $to=null) {
+		if ('CAKE_UNIT_TEST') {
+			return 1;
+		} else {
+			$this->SwiftMailer->from = $this->Session->read('Settings.email.from');
+			$this->SwiftMailer->fromName = $this->Session->read('Settings.site.company');
+			$this->SwiftMailer->to   = $to;
+			$this->SwiftMailer->smtpType = $this->Session->read('Settings.email.smtp_open');
+			$this->SwiftMailer->smtpHost = $this->Session->read('Settings.email.smtp_host');
+			$this->SwiftMailer->smtpPort = $this->Session->read('Settings.email.smtp_port');
+			$this->SwiftMailer->smtpUsername = $this->Session->read('Settings.email.smtp_user');
+			$this->SwiftMailer->smtpPassword = $this->Session->read('Settings.email.smtp_pass');
+			$method = 'smtp';
+			return $this->SwiftMailer->send($view, $subject, $method, true);
+		}
 	}
-  
-	/**
-	 * countryCityFromIP action
-	 * Get the True IP Address
-	 * @access public
-	 * @param array $data
-	 */
+	
 	private function countryCityFromIP() {
 		if (!empty($_SERVER['HTTP_CLIENT_IP'])) $ipAddr = $_SERVER['HTTP_CLIENT_IP'];
 		elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) $ipAddr = $_SERVER['HTTP_X_FORWARDED_FOR'];

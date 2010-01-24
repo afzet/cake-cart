@@ -19,6 +19,16 @@ class DojoHelper extends AppHelper {
 		return sprintf('<a href="/p/%s/%s/%s.html">', $product['Product']['id'], $code, $name);
 	}
 	
+	function sitemap($product = array()) {
+		$name = htmlspecialchars_decode($product['Product']['product_name']);
+		$name = str_replace($this->replace['product'], '', $name);
+		$name = urlencode($name);
+		
+		$code = $this->productCode($product['Product']['product_code']);
+		
+		return sprintf('p/%s/%s/%s.html', $product['Product']['id'], $code, $name);
+	}
+	
 	function productCode($code) {
 		//$code = 'PM' . $code;
 		return $code;

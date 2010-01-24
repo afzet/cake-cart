@@ -17,9 +17,9 @@ class DATABASE_CONFIG {
         'driver' => 'mysql',
         'connect' => 'mysql_connect',
         'host' => 'localhost',
-        'login' => 'pmansion',
-        'password' => 'm3m0tyh',
-        'database' => 'pmansion_production'
+        'login' => 'root',
+        'password' => '',
+        'database' => 'pcart_development'
     );
     
     

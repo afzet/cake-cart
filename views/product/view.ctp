@@ -256,7 +256,7 @@
 					<a href="http://view.nowpublic.com/?src=<?=$url?>" target="_blank" />
 						<img src="/img/social/nowpublic.gif" alt="Now Public" />
 					</a>
-					<a href="javascript:(function(){var d=document;var s=d.createElement('script');s.type='text/javascript';s.src='http://www.kaboodle.com/zg/addbutton.js';d.getElementsByTagName('head')[0].appendChild(s);})()"> <img src="http://www.kaboodle.com/ht/mk/img/kicon-sm.gif" width="16" height="16" border="0" alt="Add To Kaboodle" /></a>
+					<a href="javascript:(function(){var d=document;var s=d.createElement('script');s.type='text/javascript';s.src='http://www.kaboodle.com/zg/addbutton.js';d.getElementsByTagName('head')[0].appendChild(s);})()"> <img src="/img/social/kicon-sm.gif" width="16" height="16" border="0" alt="Add To Kaboodle" /></a>
 						<br style="clear: left;" />
 					</div>
 					</span>
@@ -270,7 +270,7 @@
   <td width="1" />
   <td width="10"/>
   <td valign="top" style="text-align: center" width="200" class="smaller">
-  	<img src="<?=$product['product_image'];?>" alt="<?=$product['product_name'];?>" id="prod_img" border="0" /> 
+  	<img src="<?php echo $dojo->imageFix($product['product_image'])?>" alt="<?=$product['product_name'];?>" id="prod_img" border="0" /> 
   	
   	<? if($product['product_thumb2']!='') { ?>
   		<br/><br/>

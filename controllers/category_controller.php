@@ -14,13 +14,19 @@
 class CategoryController extends AppController {
 	
 	var $name = 'Category';
-	var $uses = array('Product','Category');
-	
+	var $uses = array('Category');
+	var $scaffold = 'admin';
+		
+	function beforeFilter() {
+		parent::adminLayout();
+		$this->Auth->allow('view');
+	}
+		
 	function view($id = null)  {
 		$this->Category->id = $id;						
 		$category = $this->Category->read();	
 		$this->pageTitle = strtolower($category['Category']['name']).' - passion mansion adult store'; 
-		
+		$this->set('title_for_layout', $this->pageTitle);
 		
 		if($category['Category']['parent_id'] == 0)  {
 			$cats = ClassRegistry::init('Product')->cats($category['Category']['id']);
@@ -72,6 +78,10 @@ class CategoryController extends AppController {
 		$data = $this->paginate('Product');
 		$this->set(compact('data'));
 	}   
+    
+
+        
+	
 
 }
 ?>

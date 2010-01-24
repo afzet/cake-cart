@@ -12,11 +12,11 @@
  * Modified By: $LastChangedBy: jonathan $
  */
 ?>
-<div style="background-color: rgb(252, 214, 196); height: 28px; width: auto; padding-left: 12px; padding-right: 12px; padding-top: 6px;">
+<div style="background-color: #fed4cb; height: 28px; width: auto; padding-left: 12px; padding-right: 12px; padding-top: 6px;">
 	<table width="100%" cellspacing="0" cellpadding="0">
 		<tr>
 			<td>
-				<div style="font-size: 16px; font-family: Arial; color: rgb(243, 107, 43); font-weight: bold;">
+				<div style="font-size: 16px; font-family: Arial; color: #f96444; font-weight: bold;">
 					Your Cart
 				</div>				
 			</td>
@@ -54,7 +54,8 @@ if(isset($cart['items']) && count($cart['items'])!=0) {
 				<td align="center" valign="middle" height="22"><a href="/cart/delete/'.$i.'" onclick="return confirm(\'Are you sure?\');"><img src="/img/icons/delete.png" alt="Delete" /></a></td>
 				<td valign="top">
 					'. $dojo->productLink($item) .'
-						<img src="'.$item['Product']['product_thumb'].'" align="left" alt="'.$item['Product']['id'].'" style="padding-right: 10px; width:40px; height: 40px;" />
+						
+						<img src="'.$dojo->imageFix($item['Product']['product_image']).'" align="left" alt="'.$item['Product']['id'].'" style="padding-right: 10px; width:40px; height: 40px;" />
 					</a>
 					'. $dojo->productLink($item) .''.$item['Product']['product_name'].'</a><br />
 					'.$item['Product']['product_code'].'
@@ -170,17 +171,23 @@ else {
 <p align="center"><img src="/img/credits.gif" alt="Accepted Payments" /></p>
 
 <br /><br />
-<!--
 <table border="0" cellspacing="0" cellpadding"5" width="75%" style="margin: 0 auto;"> 
 	<tr>
-		<td colspan="4" style="text-align: center; font-weight: bold; background-color: rgb(252, 214, 196); height: 20px;">Do you wish to add batteries? </td>
+		<td colspan="4" style="text-align: center; font-weight: bold; background-color: #FDD0E2; height: 20px;">Do you wish to add batteries? </td>
 	</tr>
 	<tr>
-		<td align="center" style="text-align: center;padding: 10px"><a href="/p/89374/DJ0399-08/Doc+Johnson+Alkaline+Batteries++4+Pack+AA.html"><img src="/img/items/thumbnails/14485_1.jpg" alt="4pack AA $2.51" /> <br />4pack AA $2.40</a> <br /><a href="/cart/add/14485"><img style="vertical-align: middle;" alt="" src="/img/buttons/cart.gif" border="0" /></a></td>
-		<td align="center" style="text-align: center;padding: 10px"><a href="/product_info/12015"><img src="/img/items/thumbnails/12015_1.jpg" alt="4pack AAA $2.51" /> <br />4pack AAA $2.40</a> <br /> <a href="/cart/add/12015"><img style="vertical-align: middle;" alt="" src="/img/buttons/cart.gif" border="0" /></a></td>
-		<td align="center" style="text-align: center;padding: 10px"><a href="/product_info/10248"><img src="/img/items/thumbnails/10248_1.jpg" alt="2pack C $4.23" /> <br />2pack C $4.23</a>  <br /><a href="/cart/add/10248"><img style="vertical-align: middle;" alt="" src="/img/buttons/cart.gif" border="0" /></a></td>
+		<?php foreach($battery as $key => $value): ?>
+		<td align="center" style="text-align: center;padding: 10px">
+				<?php echo $dojo->productLink($value); ?>
+					<img src="<?php echo $dojo->imageFix($value['Product']['product_image']) ?>" height="100" alt="<?php echo $value['Product']['product_name']; ?>" /> <br />
+					<?php echo $value['Product']['product_name']; ?>
+				</a> <br />
+				<a href="/cart/add/<?php echo $value['Product']['id']; ?>">
+					<img style="vertical-align: middle;" alt="" src="/img/buttons/cart.gif" border="0" />
+				</a>
+			</td>
+		<?php endforeach; ?>
 	</tr>
 	
 </table>
--->
 </div>

@@ -23,6 +23,8 @@ class CartController extends AppController {
 	 * @var array 
 	 */ 
 	var $uses = array('Product','Category','Country');
+	
+	var $helpers = array('Dojo');
 
 	/**
 	 * Cart View
@@ -30,6 +32,7 @@ class CartController extends AppController {
 	 */
 	public function index() {		
 		$cart = $this->Session->read('Cart');
+		$this->set('battery', $this->Product->batteries());
 		$this->set(compact('cart'));
 	}
 
@@ -189,7 +192,7 @@ class CartController extends AppController {
 		
 		if(in_array('stc',$cart['vendor'])) {
 			if (isset($cart['country'])) {
-				if ($cart['country'] == "US") { $stc_shipping = 11.00; }
+				if ($cart['country'] == "US") { $stc_shipping = 9.99; }
 				if ($cart['country'] == "CA") { $stc_shipping = 12.00; }	
 				if ($cart['country'] == "AU") { $stc_shipping = 75.00; }	
 				if ($cart['country'] == "OT") { $stc_shipping = 25.00; }	

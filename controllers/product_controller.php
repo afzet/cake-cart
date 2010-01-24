@@ -15,11 +15,18 @@ class ProductController extends AppController  {
 	
 	var $name 		= 'Product'; 
 	var $uses = array('Product','Category','OrderItem');
+	var $helpers = array('Dojo');
 	var $components = array('Search');
 	var $paginate = array(
 	        	'limit' => 24,
 				'conditions' => array('Product.out_of_stock' => 0),
     );
+    var $scaffold = 'admin';
+	
+	function beforeFilter() {
+		parent::adminLayout();
+		$this->Auth->allow('*');
+	}
 	
 	function view($id = null)  {
 		$this->Product->id = $id;		
@@ -28,12 +35,14 @@ class ProductController extends AppController  {
 		$data['recommended'] 	= $this->Product->getRecommended($data['product']);
 		
 		$this->pageTitle = $data['product']['Product']['product_name'] .' - ' . $data['product']['Product']['product_list']; 
+		$this->set('title_for_layout', $this->pageTitle);
 		
 		$this->set(compact('data'));		
 	}	
 	
 	function whats_new()  {
 		$this->pageTitle = 'Newly Added Sex Toys - What\'s New - Passion Mansion Adult Sex Toys Store'; 
+		$this->set('title_for_layout', $this->pageTitle);
 		$this->paginate = array('order' => array('Product.created' => 'desc'));					
 			
 		$data = $this->paginate('Product');		

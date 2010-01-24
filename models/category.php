@@ -14,6 +14,7 @@
 class Category extends AppModel {
 
 	var $name = 'Category';
+	var $useTable = 'categories';
 	
 	var $hasMany = array('Product');
 	
@@ -26,8 +27,7 @@ class Category extends AppModel {
 				),
 				'order' => array('Category.name ASC')
 			);		
-			$data = $this->find('find', $conditions);
-			echo '<pre>'; print_r($data); die;
+			return $this->find('all', $conditions);
 	}
 }
 ?>
