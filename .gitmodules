@@ -1,0 +1,9 @@
+[submodule "plugins/contact"]
+	path = plugins/contact
+	url = git://github.com/msadouni/cakephp-contact-plugin.git
+[submodule "plugins/newsletter"]
+	path = plugins/newsletter
+	url = git://github.com/fabiokr/cakephp-newsletter-plugin.git
+[submodule "plugins/debug_kit"]
+	path = plugins/debug_kit
+	url = git@thechaw.com:debug_kit.git
