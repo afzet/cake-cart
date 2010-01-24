@@ -82,10 +82,10 @@ if(isset($cart['items']) && count($cart['items'])!=0) {
 			Please Select A Country:
 			<select onchange="goto_URL(this.form.country)" name="country" class="smaller" class="contact">
 				<option value=""> Select Country</option>
-				<option value="/cart/add_country/US">United States</option>
-				<option value="/cart/add_country/AU">Australia</option>		
-				<option value="/cart/add_country/CA">Canada</option>			
-				<option value="/cart/add_country/OT">Other</option>				
+				<option value="/cart/add_country/US" <?php if(isset($cart['country']) && $cart['country'] == 'US') echo 'selected'; ?>>United States</option>
+				<option value="/cart/add_country/AU" <?php if(isset($cart['country']) && $cart['country'] == 'AU') echo 'selected'; ?>>Australia</option>		
+				<option value="/cart/add_country/CA" <?php if(isset($cart['country']) && $cart['country'] == 'CA') echo 'selected'; ?>>Canada</option>		
+				<option value="/cart/add_country/OT" <?php if(isset($cart['country']) && $cart['country'] == 'OT') echo 'selected'; ?>>Other</option>		
 			</select>
 		</form>
 		</td>
@@ -170,15 +170,17 @@ else {
 <p align="center"><img src="/img/credits.gif" alt="Accepted Payments" /></p>
 
 <br /><br />
+<!--
 <table border="0" cellspacing="0" cellpadding"5" width="75%" style="margin: 0 auto;"> 
 	<tr>
 		<td colspan="4" style="text-align: center; font-weight: bold; background-color: rgb(252, 214, 196); height: 20px;">Do you wish to add batteries? </td>
 	</tr>
 	<tr>
-		<td align="center" style="text-align: center;padding: 10px"><a href="/product_info/14485"><img src="/img/items/thumbnails/14485_1.jpg" alt="4pack AA $2.51" /> <br />4pack AA $2.51</a> <br /><a href="/cart/add/14485"><img style="vertical-align: middle;" alt="" src="/img/buttons/cart.gif" border="0" /></a></td>
-		<td align="center" style="text-align: center;padding: 10px"><a href="/product_info/12015"><img src="/img/items/thumbnails/12015_1.jpg" alt="4pack AAA $2.51" /> <br />4pack AAA $2.51</a> <br /> <a href="/cart/add/12015"><img style="vertical-align: middle;" alt="" src="/img/buttons/cart.gif" border="0" /></a></td>
+		<td align="center" style="text-align: center;padding: 10px"><a href="/p/89374/DJ0399-08/Doc+Johnson+Alkaline+Batteries++4+Pack+AA.html"><img src="/img/items/thumbnails/14485_1.jpg" alt="4pack AA $2.51" /> <br />4pack AA $2.40</a> <br /><a href="/cart/add/14485"><img style="vertical-align: middle;" alt="" src="/img/buttons/cart.gif" border="0" /></a></td>
+		<td align="center" style="text-align: center;padding: 10px"><a href="/product_info/12015"><img src="/img/items/thumbnails/12015_1.jpg" alt="4pack AAA $2.51" /> <br />4pack AAA $2.40</a> <br /> <a href="/cart/add/12015"><img style="vertical-align: middle;" alt="" src="/img/buttons/cart.gif" border="0" /></a></td>
 		<td align="center" style="text-align: center;padding: 10px"><a href="/product_info/10248"><img src="/img/items/thumbnails/10248_1.jpg" alt="2pack C $4.23" /> <br />2pack C $4.23</a>  <br /><a href="/cart/add/10248"><img style="vertical-align: middle;" alt="" src="/img/buttons/cart.gif" border="0" /></a></td>
 	</tr>
 	
 </table>
+-->
 </div>

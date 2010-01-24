@@ -26,12 +26,48 @@ Home Parties Information
 		</tr>
 	</table>
 </div>
+<br />
+
 <div style="padding: 10px;">
 <p>Many wholesale customers make money by selling sextoys at home parties. We now sell an electronic book that will help you get started with your own home party business. Click here for more info or to order the home party book.</p>
+</div>
 
 <br />
-<p>If you are ready to do a home party and want some suggestions of items to carry for your party, click one of the links below. These links will fill your cart with items that you may want to order for a home party. There is no obligation to buy, if you don't want one or all of the items the link adds to your cart, just delete them from your cart before ordering. </p>
 
+<div style="background-color: rgb(252, 214, 196); height: 28px; width: auto; padding-left: 12px; padding-right: 12px; padding-top: 6px;">
+	<table width="100%" cellspacing="0" cellpadding="0">
+		<tr>
+			<td>
+				<div style="font-size: 16px; font-family: Arial; color: rgb(243, 107, 43); font-weight: bold;">
+					Registering for our parties		
+				</div>				
+			</td>
+			<td align="right">&nbsp;</td>
+		</tr>
+	</table>
+</div>
+<div style="padding: 10px;">
+<p>In order to register please visit <a href="http://pmsextoys.com" target="new">www.pmsextoys.com</a> and fill our the application form so that we can get you started or email us at <a href="mailto:parties@pmsextoys.com">parties@pmsextoys.com</a>.</p>
+</div>
 
+<br />
+
+<div style="background-color: rgb(252, 214, 196); height: 28px; width: auto; padding-left: 12px; padding-right: 12px; padding-top: 6px;">
+	<table width="100%" cellspacing="0" cellpadding="0">
+		<tr>
+			<td>
+				<div style="font-size: 16px; font-family: Arial; color: rgb(243, 107, 43); font-weight: bold;">
+					Here are some featured products for our parties
+				</div>				
+			</td>
+		</tr>
+	</table>
+</div>
+<br />
+<?=$this->renderElement('party_product_view', array('data' => $data));?>
+<div style="text-align:center">
+	
+<a href="/parties/show">View all of our products for home parties</a>
+</div>
 
 </div>

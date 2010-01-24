@@ -17,10 +17,7 @@
 		<li><a href="/"> Home</a></li>
 	</ul>	
 	<ul class="nav">
-		<li><a href="/parties"> Home Parties</a></li>
-	</ul>	
-	<ul class="nav">
-		<li><a href="/product/best_sellers"> Best Sellers</a></li>
+		<li><a href="/affiliates"> Affiliates</a></li>
 	</ul>	
 	<ul class="nav">
 		<li><a href="/cart"> My Cart</a></li>
@@ -35,6 +32,9 @@
 	<ul class="nav">
 		<li><a href="/faqs"> FAQ</a></li>
 	</ul>
+	<ul class="nav">
+		<li><a href="/tweets"> News &amp; Updates</a></li>
+	</ul>	
 	
 	<ul class="nav">
 		<li class="search">

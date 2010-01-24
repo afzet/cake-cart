@@ -35,24 +35,22 @@
 	&nbsp;<strong><a href="/faqs">F.A.Q.</a></strong><br />
 	&nbsp;<strong><a href="/search">Search</a></strong><br />
 	&nbsp;<strong>Categories</strong><br />
-	&nbsp;&nbsp; &raquo; <a href="/category/view/70/Anal+Toys">Anal Toys</a><br />
-	&nbsp;&nbsp; &raquo; <a href="/category/view/13/Bondage+%26+Fetish">Bondage &amp; Fetish</a><br />
-	&nbsp;&nbsp; &raquo; <a href="/category/view/50/Clothing">Clothing</a><br />
-	&nbsp;&nbsp; &raquo; <a href="/category/view/75/Dildos">Dildos</a><br />
-	&nbsp;&nbsp; &raquo; <a href="/category/view/94/For+Men">For Men</a><br />
-	&nbsp;&nbsp; &raquo; <a href="/category/view/137/For+Women">For Women</a><br />
-	&nbsp;&nbsp; &raquo; <a href="/category/view/37/Gags">Gags</a><br />
-	&nbsp;&nbsp; &raquo; <a href="/category/view/20/Lubes+%26+Oils">Lubes &amp; Oils</a><br />
-	&nbsp;&nbsp; &raquo; <a href="/category/view/113/Misc">Misc</a><br />
-	&nbsp;&nbsp; &raquo; <a href="/category/view/1/Movies">Movies</a><br />
-	&nbsp;&nbsp; &raquo; <a href="/category/view/243/Rabbits">Rabbits</a><br />
-	&nbsp;&nbsp; &raquo; <a href="/category/view/60/Realistic">Realistic</a><br />
-	&nbsp;&nbsp; &raquo; <a href="/category/view/74/Vibrators">Vibrators</a><br />
+	<?
+	foreach ($session->read('NavCats') as $category) {
+		echo '
+		&nbsp;&nbsp; &raquo; 
+			<a href="/c/'.$category['Category']['id'].'/'.urlencode($category['Category']['name']).'.html">
+				'.htmlspecialchars_decode($category['Category']['name']).'
+			</a>
+		<br />';
+	}
+	?>
 	&nbsp;<strong><a href="/faqs/view/26/Terms_Of_Use_Agreement">Terms Of Use Agreement</a></strong><br />
 	&nbsp;<strong><a href="/faqs/view/27/Privacy_Policy">Privacy Policy</a></strong><br />
 	&nbsp;<strong><a href="/press">Press</a></strong><br />
 	&nbsp;<strong><a href="/docs/advertise">Advertising</a></strong><br />
 	&nbsp;<strong><a href="/affiliates">Affiliates</a></strong><br />
+	&nbsp;<strong><a href="/parties">Home Parties</a></strong><br />
 	&nbsp;<strong><a href="/docs/2257">18 U.S.C Section 2257 Compliance Notice</a></strong><br />
 	</ul>
   </p>

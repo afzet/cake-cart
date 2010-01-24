@@ -28,14 +28,14 @@ $i = 1;
 		if ($ttl>=4) { $width = "25%"; }
 		else { $width = 100%$ttl.'%'; }
 		?>
-		<td valign="bottom" width="<?=$width?>" style="font-size: 10px; text-align:center; padding: 8px; border-right: 1px dotted #FCD6C4">
-			<?=$dojo->productLink($product);?><img src="<?=$product['Product']['product_thumb'];?>" /></a>	
+		<td valign="top" width="<?=$width?>" style="font-size: 10px; text-align:center; padding: 8px; border-right: 1px dotted #FCD6C4">
+			<?=$dojo->productLink($product);?><img src="<?=$dojo->imageFix($product['Product']['product_image']);?>" height="100" /></a>	
 			<br />
 			<?=$dojo->productLink($product);?>
 				<strong><?=$product['Product']['product_name'];?></strong>
 			</a> 
 			<br /><br />
-			<?=$product['Product']['product_code'];?>
+			<?=$dojo->productCode($product['Product']['product_code']);?>
 			<br />
 			<?=$product['Product']['product_list'];?>
 			<br /><br />

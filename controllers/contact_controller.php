@@ -15,9 +15,11 @@ class ContactController extends AppController {
 
 	var $name = 'Contact';
     var $uses = array('Ticket','TicketResponse');
-    var $helpers = array('Form','Html');
 	var $components = array('Email'); 
 	
+	function beforeFilter() {
+		parent::beforeFilter();
+	}
 
 	function index() {
 		if (!empty($this->data))  {		   	    

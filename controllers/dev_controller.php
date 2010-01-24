@@ -5,6 +5,11 @@ class DevController extends AppController {
 	var $name = 'Dev';
 	var $uses = array('Category', 'Product', 'BestSeller');
 	
+	
+	function index() {
+		echo $path;
+		die;
+	}
 	function cats () {
 		$data = $this->Product->find('all', array(
 			'conditions' => array('Category.parent_id' => 0),

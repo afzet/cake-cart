@@ -13,8 +13,8 @@
  */
 class AppController extends Controller  {
 	
-	var $components = array('DebugKit.Toolbar');  
-	var $helpers = array('Dojo', 'Html', 'Javascript', 'Form');
+	// var $components = array('DebugKit.Toolbar');  
+	var $helpers = array('Dojo', 'Html', 'Thumbnail', 'Javascript', 'Form');
 	/**
 	 * Authentication Action
 	 * Validate Affiliate Access Authentication
@@ -25,6 +25,7 @@ class AppController extends Controller  {
 		$this->__cats();
 		$this->__checkCode();
 		// ClassRegistry::init('Product')->cats();
+		$this->set('searched', $this->Session->read('Search.recent'));
 		$this->Session->write('Settings', ClassRegistry::init('Setting')->getSettings());
 	}
 	

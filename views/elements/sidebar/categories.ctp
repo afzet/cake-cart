@@ -30,7 +30,6 @@
 			 <ul>
 			 	
 		<?
-		$i = 1;
 		foreach ($session->read('NavCats') as $category) {
 			echo '
 			<li>
@@ -38,7 +37,6 @@
 					'.htmlspecialchars_decode($category['Category']['name']).'
 				</a>
 			</li>';
-			$i++;
 		}
 		?>
 			 </ul>

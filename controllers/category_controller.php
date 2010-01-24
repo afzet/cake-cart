@@ -32,11 +32,26 @@ class CategoryController extends AppController {
 			$array[$i+1] = $category['Category']['id'];
 			
 			$_cats = implode(',',$array);
-			$conditions = array('Product.category_id IN ('.$_cats.')');				
+			$conditions = array(
+				'and' => array(
+					'Product.category_id IN ('.$_cats.')',
+					'Product.out_of_stock' => 0,
+					'Product.product_image !=""'
+				)
+			);				
 			$this->set('cats',$cats);
 		}
 		else {			
-			$conditions = array('Product.category_id = '.$id.'');
+			$conditions = array(
+				'or' => array(
+					'Product.category_id' => $id, 
+					'Category.parent_id' => $id
+				),
+				'and' => array(
+					'Product.out_of_stock' => 0,
+					'Product.product_image !=""'
+				)
+			);
 			$cats = ClassRegistry::init('Product')->cats($category['Category']['id']);
 			$this->set('cats',$cats);
 			
@@ -48,7 +63,7 @@ class CategoryController extends AppController {
 				'limit' => 24,
 				'fields' => array(
 					'Product.out_of_stock', 'Product.product_name', 'Product.product_list', 'Product.product_thumb',
-					'Product.product_cost', 'Product.product_code', 'Product.product_price',
+					'Product.product_cost', 'Product.product_code', 'Product.product_price', 'Product.product_image',
 					'Product.category_id', 'Product.id', 'Category.name'
 				),
 				'recursive' => 0

@@ -18,13 +18,14 @@
 		<tr>
 			<td>
 				<div style="font-size: 16px; font-family: Arial; color: rgb(243, 107, 43); font-weight: bold;">
-					<a href="/cart">My Cart</a>
+					My Cart 
 				</div>				
 			</td>
 		</tr>
 	</table>
 </div>
 <br />
+<? $cart = $session->read('Cart'); ?>
 <? if (isset($cart) && count($cart['items'])>0) { ?>
 <table width="100%" cellspacing="0" cellpadding="0">
 <? 
@@ -51,7 +52,10 @@ foreach ($cart['items'] as $item) {
 		?>
 <p align="center"><br />
 	<img src="/img/icons/cart.png" valign="middle" alt="" />
-<strong>Total: $<?=number_format($total,2)?></strong><br /><br />
+<strong>Order Total: $<?=number_format($total,2)?></strong>
+<br /><br />
+<?php echo $html->link($html->image('buttons/checkout.gif'), array('controller' => 'cart'), null, null, false); ?>
+<br /><br />
 <? 
 } else { 
 	?>

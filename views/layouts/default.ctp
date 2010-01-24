@@ -34,11 +34,11 @@
 		
 	</head>
 	<body>
-		<!-- <div class="twitter"><a href="http://twitter.com/passionmansion" target="_blank" rel="external"><img border="0" src="/img/twitter.png"/></a></div> -->
+		<div class="twitter"><a href="http://twitter.com/passionmansion" target="_blank" rel="external"><img border="0" src="/img/twitter.png"/></a></div>
 		<table id="main" width="940" cellspacing="0" cellpadding="0" border="0" style="text-align: center">
 			<tr>
 				<td style="background: url(/img/web_logo.gif) no-repeat; height: 99px; text-align: right">
-					<?=$html->link($html->image('banners/affiliate_signup.gif'),'/affiliates',null,null,false)?>
+					<?=$html->link($html->image('banners/passion-parties.png'),'mailto:anthony@passionmansion.com?subject=Host Passion Party',null,null,false)?>
 				</td>				
 			</tr>
 			<tr>
@@ -52,8 +52,11 @@
 					<table width="100%" cellspacing="0" cellpadding="0" border="0">
 						<tr>
 							<td valign="top" style="width: 194px">
-								<?php echo $this->renderElement('nav_cart'); ?>
-								<?php echo $this->renderElement('nav_sidebar'); ?>
+								<?php 
+									echo $this->renderElement('nav_cart');
+									if (!empty($searched)) echo $this->renderElement('sidebar/recent_search');
+									echo $this->renderElement('nav_sidebar'); 
+								?>
 							</td>
 							<td style="width: 10px" >&nbsp;</td>
 							<td valign="top">		
@@ -78,7 +81,7 @@
   					echo $html->link('Privacy Policy','/faqs/view/27/Privacy_Policy').' | ';
   					echo $html->link('Press','/press').' | ';
   					echo $html->link('Advertising', '/docs/advertise').' | ';
-  					echo $html->link('Affiliates', '/affiliates').' | ';
+  					// echo $html->link('Affiliates', '/affiliates').' | ';
   					echo $html->link('Sitemap', '/docs/sitemap');
   					?>
   					<br /><br />

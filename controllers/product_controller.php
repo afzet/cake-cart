@@ -15,6 +15,7 @@ class ProductController extends AppController  {
 	
 	var $name 		= 'Product'; 
 	var $uses = array('Product','Category','OrderItem');
+	var $components = array('Search');
 	var $paginate = array(
 	        	'limit' => 24,
 				'conditions' => array('Product.out_of_stock' => 0),
@@ -81,18 +82,18 @@ class ProductController extends AppController  {
 		
 		
 		if (empty($this->params['form']['mainkeyword']) == false)  { 
-			$search['mainkeyword'] = Sanitize::clean(trim($this->params['form']['mainkeyword']));
+			$search['mainkeyword'] = trim($this->params['form']['mainkeyword']);
 			$search['field']   = '';
 			$this->Session->write('Search', $search);
 		}
 		else if (empty($this->params['named']['mainkeyword']) == false)  { 
-			if($this->params['named']['field']!='') { 
+			if(isset($this->params['url']['field']) && $this->params['named']['field']!='') { 
 				$search['field'] = $this->params['named']['field'];
 			}
 			else {
 				$search['field']   = '';
 			}
-			$search['mainkeyword'] = Sanitize::clean(trim($this->params['named']['mainkeyword']));
+			$search['mainkeyword'] = trim($this->params['named']['mainkeyword']);
 			$this->Session->write('Search', $search);			
 		}
 		else if (empty($this->params['url']['mainkeyword']) == false)  { 
@@ -102,7 +103,7 @@ class ProductController extends AppController  {
 			else {
 				$search['field']   = '';
 			}
-			$search['mainkeyword'] = Sanitize::clean(trim($this->params['url']['mainkeyword']));
+			$search['mainkeyword'] = trim($this->params['url']['mainkeyword']);
 			$this->Session->write('Search', $search);			
 		}
 		else {
@@ -111,24 +112,56 @@ class ProductController extends AppController  {
 			
 		//echo '<pre>'; print_r($search); die;
 		
-		$like   = "LIKE '%".$search['mainkeyword']."%' ";
+		$like   = "LIKE '%". urldecode($search['mainkeyword'])."%' ";
 		
 		if($search['field']!='') {
 			$this->paginate = array(
-				'conditions' => 
-					"Product.".$search['field']." ".$like."",
+				'conditions' => array(
+					'and' => array(
+						'Product.out_of_stock' => 0,
+						"Product.".$search['field']." ".$like."",
+					)
+				),
+				'fields' => array(
+					'Product.product_name', 'Product.product_list',
+					'Product.product_code', 'Product.product_price',  'Product.product_thumb', 'Product.product_image',
+					'Product.id'
+				),
+				'recursive' => 1
 			);	
 			
 		} else {
 			$this->paginate = array(
-				'conditions' => 
-					"Product.product_name $like || Product.product_code $like || Product.product_desc $like",
+				'conditions' => array(
+					'or' => array(
+						"Product.product_name $like",
+						"Product.product_code $like",
+						"Product.product_desc $like",
+					),
+					'and' => array(
+						'Product.out_of_stock' => 0	
+					)
+				),
+				'fields' => array(
+					'Product.product_name', 'Product.product_list',
+					'Product.product_code', 'Product.product_price',  'Product.product_thumb', 'Product.product_image',
+					'Product.id'
+				),
+				'recursive' => 1
 			);	
 		}			
-			
-		$data = $this->paginate('Product');		
+				
+		$data = $this->paginate('Product');	
+		$count = $this->Product->find('count', array('conditions' => $this->paginate['conditions']));		
+		$this->Search->store($search['mainkeyword'], $count);
 		$this->set('phrase',$search['mainkeyword']);
 		$this->set(compact('data'));
+	}
+	
+	function productCode($code) {
+		$code = str_replace('CNV', '', $code);
+		$code = 'PM' . $code;
+		return $code;
 	}
 }
 ?>
