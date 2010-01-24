@@ -3,20 +3,14 @@
 class Product extends AppModel {
 
 	var $name = 'Product'; 
-	var $belongsTo = array('Category');
-	var $hasOne = array(
-		'Image' => array(
-			'className' => 'Image',
-			'foreignKey' => '',
-			'conditions' => array('Image.id' => 'Product.image_id'),
-			'fields' => array('Image.filename')
-		)
+	var $belongsTo = array(
+		'Category', 
+		'Image' => array('fields' => array('Image.id', 'Image.name'))
 	);
 	
 	var $fields = array(
-				'Product.name', 'Product.desc',
-				'Product.model', 'Product.price', 
-				'Product.id', 'Product.image_id',  'Image.filename'
+		'Product.name', 'Product.desc', 'Product.model', 'Product.price', 
+		'Product.id', 'Product.image_id', 'Image.name'
 	);
 	
 	function batteries() {	
@@ -68,7 +62,7 @@ class Product extends AppModel {
 			'order' => 'rand()'
 		));
 		foreach ($featured as $key => $value):
-			if (parent::imageCheck($value['Image']['filename']) == 0) {
+			if (parent::imageCheck($value['Image']['name']) == 0) {
 				unset($featured[$key]);
 			}
 		endforeach;
@@ -88,7 +82,7 @@ class Product extends AppModel {
 			'order' => array('Product.id' => 'desc')
 		));
 		foreach ($featured as $key => $value):
-			if (parent::imageCheck($value['Image']['filename']) == 0) {
+			if (parent::imageCheck($value['Image']['name']) == 0) {
 				unset($featured[$key]);
 			}
 		endforeach;

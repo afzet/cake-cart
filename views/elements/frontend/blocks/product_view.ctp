@@ -29,7 +29,7 @@ $i = 1;
 		else { $width = 100%$ttl.'%'; }
 		?>
 		<td valign="top" width="<?=$width?>" style="font-size: 10px; text-align:center; padding: 8px; border-right: 1px dotted #FCD6C4">
-			<?=$dojo->productLink($product);?><?php echo $html->image('products/'. $product['Image']['filename']);?></a>	
+			<?=$dojo->productLink($product);?><?php echo $html->image('products/'. $product['Image']['name']);?></a>	
 			<br />
 			<?=$dojo->productLink($product);?>
 				<strong><?=$product['Product']['name'];?></strong>

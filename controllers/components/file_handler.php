@@ -148,21 +148,11 @@ class FileHandlerComponent extends Object {
 			}
 			// Get the database id
 			$file_id = $this->{$this->dbModel}->getLastInsertId();
-			$dir = $dir . $file_id . DS;
+			$dir = $dir;
 		}
 		// Generate dir name if using handler type of array
 		if($this->handlerType == 'array') {
-			$dir = $dir . uniqid('') . DS;
-		}
-		// Create a folder for the file, on failure delete db record and set error
-		if(!mkdir($dir)) {
-			// Remove db record if using db
-			if($this->handlerType == 'db') {
-				$this->{$this->dbModel}->del($file_id);
-			}
-			// Set the error and return false
-			$this->setError('The folder for the file upload could not be created.');
-			return false;
+			$dir = $dir;
 		}
 		// Move the uploaded file to the new directory
 		if(!move_uploaded_file($_FILES[$field]['tmp_name'], $dir . basename($_FILES[$field]['name']))) {
