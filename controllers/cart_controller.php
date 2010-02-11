@@ -24,7 +24,7 @@ class CartController extends AppController {
 	 */ 
 	var $uses = array('Product','Category','Country');
 	
-	var $helpers = array('Dojo');
+	var $helpers = array('Dojo', 'Gateways.Payment');
 
 	/**
 	 * Cart View

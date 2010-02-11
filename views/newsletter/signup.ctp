@@ -30,7 +30,7 @@
 		submit your email below. <br />	 <br />	
 		<?
 		echo $form->create('Subscriber', array('url' => '/newsletter/signup'));
-    echo $form->input('Subscriber.email', array('class'=>'contact', 'label'=>'Please enter your email', 'class' => 'contact'));
+    echo $form->input('Subscriber.email', array('class'=>'contact', 'label'=>'Please enter your email'));
 		echo $form->submit('buttons/signup.gif');
     echo $form->end();
 		?>

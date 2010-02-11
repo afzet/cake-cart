@@ -1,0 +1,48 @@
+<?
+header('Content-type: text/xml');
+mysql_connect('localhost','jonathan','m3m0tyh');
+mysql_select_db('pm_production');
+$s = "SELECT p.id, p.product_code, p.product_name, p.product_desc, p.product_list, c.name
+	  FROM order_items o
+	  LEFT JOIN products p ON o.product_id = p.id
+	  LEFT JOIN categories c ON c.id = p.category_id 
+	  WHERE p.category_id!=''
+	  ORDER BY o.created DESC 
+	  LIMIT 25";
+$q = mysql_query($s) or die(mysql_error());
+echo '<?xml version="1.0" encoding="UTF-8"?>';
+?>
+<rss version="2.0"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:admin="http://webns.net/mvcb/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:atom="http://www.w3.org/2005/Atom">  
+<channel>
+<title>Passion Mansion</title>
+<link>http://<?=$_SERVER['SERVER_NAME']?>/product/whats_new</link>
+<description>What's New</description>
+<dc:language>en-us</dc:language>
+<dc:creator>Passion Mansion (info@passionmansin.com)</dc:creator>
+<dc:rights>Copyright 2008 Passion Mansion, Inc.</dc:rights>
+<dc:date><?=date('Y-m-d\TH:m:s\Z')?></dc:date>
+<atom:link href="http://<?=$_SERVER['SERVER_NAME']?>/rss/new.xml" rel="self" type="application/rss+xml" />
+<admin:errorReportsTo rdf:resource="mailto:info@passionmansin.com"/>
+  
+ 
+<? 
+while ($row = mysql_fetch_array($q)) { 
+if (empty($row['product_desc'])) $desc = $row['product_list'];
+else  $desc = $row['product_desc'];
+?>
+<item>
+	<title><?=$row['product_name']?> - <?=$row['product_code']?></title>
+	<link>http://<?=$_SERVER['SERVER_NAME']?>/product_info/<?=$row['id']?></link>
+	<guid>http://<?=$_SERVER['SERVER_NAME']?>/product_info/<?=$row['id']?></guid>
+	<content:encoded><![CDATA[<?=$desc?>]]></content:encoded>
+	<dc:subject><?=htmlentities($row['name'])?></dc:subject>
+	<dc:date><?=date('Y-m-d\TH:m:s\Z')?></dc:date>
+</item>
+<? } ?>
+</channel>
+</rss>

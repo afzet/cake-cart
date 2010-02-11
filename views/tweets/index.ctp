@@ -15,7 +15,6 @@
 <div style="padding: 10px;">	
 	<ul style="list-style: none; width: 90">
 		<?php
-		echo '<pre>'; print_r($tweets);
 		$source = 'source';
 		$tweet = $tweets[2];
 		foreach ($tweets as $tweet):

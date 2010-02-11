@@ -1,3 +1,4 @@
+
 <?php
 class TweetsController extends AppController {
 	
@@ -5,10 +6,8 @@ class TweetsController extends AppController {
 	var $pageTitle = 'News &amp; Updates';
 	
 	function beforeFilter() {
-		parent::beforeFilter();
         $this->Twitter = ConnectionManager::getDataSource('twitter');
         $this->user = $this->Twitter->account_verify_credentials();
-        $this->Auth->allow('index');
 	}
 	
 	function index(){

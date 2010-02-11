@@ -1,7 +1,0 @@
-
-		<div id="menu2">
-			<ul id="nav2">
-			  <li><a href="/categories">View All</a></li>
-			  <li><a href="/categories/add">Add</a></li>
-			</ul>
-		</div>

@@ -18,14 +18,24 @@ class AffiliatesController extends AppController {
 	 * @var boolean 
 	 */
 	var $name = 'Affiliates'; 
-	var $uses = array('Affiliate','OrderItem','Payment');
-	var $helpers = array('Form','Html');
-	var $components = array('Email','Crypter','Cookie', 'DebugKit.Toolbar'); 
-	var $scaffold = 'admin';
 	
-	function beforeFilter() {
-		$this->Auth->allow('*');
-	}
+	/**
+	 * Models Used
+	 * @var array 
+	 */ 
+	var $uses = array('Affiliate','OrderItem','Payment');
+	
+	/**
+	 * Helpers Used
+	 * @var array 
+	 */ 
+	var $helpers = array('Form','Html');
+	
+	/**
+	 * Components Used
+	 * @var array 
+	 */ 
+	var $components = array('Email','Crypter','Cookie'); 
 
 	/**
 	 * Index Action

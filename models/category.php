@@ -14,22 +14,28 @@
 class Category extends AppModel {
 
 	var $name = 'Category';
-	var $useTable = 'categories';
 	
-	var $belongsTo = array(
-		'Parent' => array(
-			'className' => 'Category',
-			'foreignKey' => 'parent_id',
-			'fields' => array('Parent.name', 'Parent.id')
-		)	
-	);
 	var $hasMany = array('Product');
 	
+	function cats ($id = 0) {
+		return $this->find('all', array(
+			'conditions' => array('Category.parent_id' => $id, 'Category.status' => 1),
+			'fields' => array('Category.name','Category.id'),
+			'order' => array('Category.name' => 'ASC'),
+			'recursive' => 0,
+			'group' => 'Category.name'
+		));
+	}
 	function nav_cats () {
 			$conditions = array(
 				'fields' => array('Category.name','Category.id'),
 				'recursive' => -1,
-				'conditions' => array('Category.parent_id !=' => null),
+				'conditions' => array(
+				   'and' => array(
+   					'Category.parent_id' => 0, 
+   					'Category.status' => 1,
+				   )
+				),
 				'order' => array('Category.name ASC')
 			);		
 			return $this->find('all', $conditions);

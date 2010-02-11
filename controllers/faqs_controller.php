@@ -13,14 +13,8 @@
  */
 class FaqsController extends AppController {
 
-	var $name = 'Faqs';		
-	var $scaffold = 'admin';
-    
-	function beforeFilter() {
-		parent::beforeFilter();
-		parent::adminLayout();
-		$this->Auth->allow('index', 'view');
-	}
+	var $name = 'Faqs';
+	
 
 	function index() {
 		$data = ClassRegistry::init('FaqCategory')->find('all');

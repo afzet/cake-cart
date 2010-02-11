@@ -17,7 +17,8 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
         <head>
-                <title><?php echo $title_for_layout;?></title>
+                <title><?=$title_for_layout;?></title>
+                <base href="https://passionmansion.com/" />
                 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
                 <meta name="description" content="<?=$session->read('Settings.description');?>" />
                 <meta name="keywords" content="<?=$session->read('Settings.keywords');?>" />
@@ -43,7 +44,7 @@
 			</tr>
 			<tr>
 				<td>
-					<?php echo $this->renderElement('frontend/menus/top'); ?>
+					<?php echo $this->renderElement('nav_top'); ?>
 				</td>
 			</tr>
 			<tr>
@@ -53,9 +54,9 @@
 						<tr>
 							<td valign="top" style="width: 194px">
 								<?php 
-									echo $this->element('frontend/blocks/cart');
-									if (!empty($searched)) echo $this->element('frontend/blocks/search');
-									echo $this->element('frontend/blocks/sidebar', array('navCats' => $navCats)); 
+									echo $this->renderElement('nav_cart');
+									if (!empty($searched)) echo $this->renderElement('sidebar/recent_search');
+									echo $this->renderElement('nav_sidebar'); 
 								?>
 							</td>
 							<td style="width: 10px" >&nbsp;</td>
@@ -76,9 +77,17 @@
           	be viewed by minors. If you are a parent and you want to block this site, please contact one 
           	of the following: RSAC Cyber Patrol Safesurf SurfWatch Websense SmartAlex. 
   					<br /><br />
-					<?php echo $this->element('frontend/menus/footer'); ?>
+  					<?	
+  					echo $html->link('Terms of Use Agreement', '/faqs/view/26/Terms_Of_Use_Agreement').' | ';
+  					echo $html->link('Privacy Policy','/faqs/view/27/Privacy_Policy').' | ';
+  					echo $html->link('Press','/press').' | ';
+  					echo $html->link('Advertising', '/docs/advertise').' | ';
+  					// echo $html->link('Affiliates', '/affiliates').' | ';
+  					echo $html->link('Sitemap', '/docs/sitemap').' | ';
+  					echo $html->link('Aknowledgements', '/docs/thanks');
+  					?>
   					<br /><br />
-  					<?=$session->read('Settings.site.copyright'); ?>
+  					<?=$session->read('Settings.copyright');?>
   					<br /><br />
   					<?=$html->link('18 U.S.C Section 2257 Compliance Notice', '/docs/2257');?>
 					</div>
@@ -89,7 +98,11 @@
 			</tr>
 		</table>		
     <div style="display:none">
-		<?php echo $this->element('frontend/modules/google/analytics'); ?>
+		<script src='https://ssl.google-analytics.com/ga.js' type='text/javascript'></script>
+		<script type="text/javascript">
+			var pageTracker = _gat._getTracker("UA-4225920-1");
+			pageTracker._trackPageview();
+		</script>
     </div>
   </body>
 </html>

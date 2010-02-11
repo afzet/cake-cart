@@ -153,6 +153,10 @@ if(isset($cart['items']) && count($cart['items'])!=0) {
 				<img src="/img/buttons/no-checkout.gif" alt="" />
 				<? } ?>
 			</form>
+			<br /><br />
+			<?php 
+				// echo $payment->google($cart['items']); 
+				?>
 		</td>
 	</tr>
 </table>

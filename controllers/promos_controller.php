@@ -15,11 +15,6 @@ class PromosController extends AppController
 {	
 	var $name = 'Promos';  
 	var $uses = array('Promo');
-	var $scaffold = 'admin';
-	
-	function beforeFilter() {
-		parent::adminLayout();
-	}
 		
 	function code() 
 	{

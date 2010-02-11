@@ -12,11 +12,11 @@
  * Modified By: $LastChangedBy: jonathan $
  */
 ?>
-<div style="background-color: rgb(252, 214, 196); height: 28px; width: auto; padding-left: 12px; padding-right: 12px; padding-top: 6px;">
+<div style="background-color: #fed4cb; height: 28px; width: auto; padding-left: 12px; padding-right: 12px; padding-top: 6px;">
 	<table width="100%" cellspacing="0" cellpadding="0">
 		<tr>
 			<td>
-				<div style="font-size: 16px; font-family: Arial; color: rgb(243, 107, 43); font-weight: bold;">
+				<div style="font-size: 16px; font-family: Arial; color: #f96444; font-weight: bold;">
 					Contact Us
 				</div>				
 			</td>
@@ -29,7 +29,11 @@
 <? if ($session->check('Message.flash')) $session->flash(); ?>
 
 <div style="padding: 10px;">	
-    
+<h3>Live Support</h3><br />
+Contact our live support staff by clicking the button on the left.
+<br />
+<br />	
+<h3>Email Support</h3><br />
 Please fill out the below form in order to contact us. If you feel that you need to speak to someone directly, 
 you can call us at (954) 297-9283.
 <br /><br />

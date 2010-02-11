@@ -17,10 +17,8 @@ class Country extends AppModel {
 	var $useTable = 'countries';
 	
 	function setCountries ($str) {
-		return $this->find('all', array(
-			'conditions' => array('Country.'.$str => 1)	
-		));
+		$conditions = array('Country.'.$str => 1);		
+		return $this->findAll($conditions);
 	}
-	
 }
 ?>

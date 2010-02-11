@@ -16,14 +16,12 @@ class Setting extends AppModel {
 	var $name = 'Setting';	
 	
 	function getSettings() {
-		$settings = $this->find('all', array(
-			'fields' => array('Setting.category', 'Setting.key', 'Setting.value'),
-			'order' => array('Setting.category', 'Setting.key')	
-		));
-		foreach ($settings as $key => $value) {
- 			$setting[$value['Setting']['category']][$value['Setting']['key']] = $value['Setting']['value'];
+		$settings = $this->findAll();
+		$var = array();
+		foreach ($settings as $setting) {
+ 			$var[$setting['Setting']['id']] = $setting['Setting']['value'];
 		}
-		return $setting;
+		return $var;
 	}
 }
 ?>

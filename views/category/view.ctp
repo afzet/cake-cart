@@ -30,4 +30,4 @@ $paginator->options(array('url' => $currentUrl));
 	</table>
 </div>
 <br />
-<?php echo $this->element('frontend/category_overview');?>
+<?=$this->renderElement('category_overview');?>

@@ -1,8 +1,20 @@
-<?php
- 
+ <?php
+/**
+ * SVN FILE: $Id: affiliate.php 499 2008-09-05 01:56:38Z jonathan $
+ *
+ * Contact Model
+ *
+ * @package pmCart
+ * @author Jonathan Bradley <jonathan@passionmansion.com>
+ * @copyright Copyright 2008, Passion Mansion, Inc.
+ * @version $Revision: 499 $
+ * Last Modified: $Date: 2008-09-04 21:56:38 -0400 (Thu, 04 Sep 2008) $
+ * Modified By: $LastChangedBy: jonathan $
+ */
+define('VALID_DATE', '/^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/');  
 class Affiliate extends AppModel {
 
-var $name = 'Affiliate';
+	var $name = 'Affiliate';
 
   var $validate = array(
     'contact_name' => array(
@@ -40,7 +52,7 @@ var $name = 'Affiliate';
     ),
     'date_of_birth' => array(
       'required' => array(
-        'rule' => VALID_NOT_EMPTY, 
+        'rule' => VALID_DATE, 
         'on' => 'create',
         'message' => 'Must enter a valid date MM-DD-YYYY'
       )

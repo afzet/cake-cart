@@ -229,7 +229,7 @@
 					<? 
 					$url = 'http://passionmansion.com/product_info/'.$product['id'];
 					$title   = urlencode($product['product_name']);
-					$media   = $product['product_thumb'];
+					$media   = $product['product_image'];
 					
 					?>
 					<a href="http://www.myspace.com/Modules/PostTo/Pages/?u=<?=$url?>&amp;c=<?=$title?>" target="_blank" />
@@ -272,12 +272,6 @@
   <td valign="top" style="text-align: center" width="200" class="smaller">
   	<img src="<?php echo $dojo->imageFix($product['product_image'])?>" alt="<?=$product['product_name'];?>" id="prod_img" border="0" /> 
   	
-  	<? if($product['product_thumb2']!='') { ?>
-  		<br/><br/>
-  		<a href="#" onclick="document.getElementById('prod_img').src='/img/items/<?=$product['id'];?>_1.jpg'">Image 1</a>
-  		&nbsp;&nbsp; 
-  		<a href="#" onclick="document.getElementById('prod_img').src='/img/items/<?=$product['id'];?>_2.jpg'">Image 2</a>
-  	<? } ?>
   	<br/><br/>
   	<br/>
 	</td>
