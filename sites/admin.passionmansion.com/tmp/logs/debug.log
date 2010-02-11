@@ -1,0 +1,3 @@
+2008-08-06 06:27:40 Debug: Notice (8): Undefined variable: fh in [APP\controllers\subscribers_controller.php, line 18]
+2008-08-06 06:27:40 Debug: Notice (8): Undefined variable: fh in [APP\controllers\subscribers_controller.php, line 19]
+2008-08-06 06:39:36 Debug: Notice (8): Undefined variable: fd in [APP\controllers\subscribers_controller.php, line 21]

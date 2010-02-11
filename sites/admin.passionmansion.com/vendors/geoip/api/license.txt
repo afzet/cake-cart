@@ -1,0 +1,5 @@
+The pure PHP library of the GeoIP API seem to be distributed under the LGPL
+license.
+
+You can view the online copy at:
+    http://www.gnu.org/licenses/lgpl.html
