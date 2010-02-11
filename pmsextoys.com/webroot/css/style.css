@@ -1,0 +1,229 @@
+
+/**
+ * SVN FILE: $Id: style.css 504 2008-09-05 02:02:33Z jonathan $
+ *
+ * Style CSS
+ *
+ * @package pmCart
+ * @author Jonathan Bradley <jonathan@passionmansion.com>
+ * @copyright Copyright 2008, Passion Mansion, Inc.
+ * @version $Revision: 504 $
+ * Last Modified: $Date: 2008-09-04 22:02:33 -0400 (Thu, 04 Sep 2008) $
+ * Modified By: $LastChangedBy: jonathan $
+ */
+* {margin: 0; padding:0}
+#main { background-color: #ffffff; margin: 0 auto; padding: 11px; border-right: 1px solid #f6f6f6; border-left: 1px solid #f6f6f6;}
+
+.menu2 { background-color:#C41D1D}
+body {  font-size: 11px; color: #424242; font-style: normal; font-family: "verdana"; text-decoration: none;  letter-spacing: 0; background: url('/img/bg.gif');background-color:#ffffff; margin-bottom: 0; padding-bottom: 0;}
+td { font-size: 11px; color: #424242; font-style: normal; font-family: "verdana"; text-decoration: none; letter-spacing: 0 }
+a { line-height: 1;}
+a:active { text-decoration: none; color: #F75696; }
+a:visited { text-decoration: none; color: #F75696; }
+a:link {  text-decoration: none; color: #F75696;}
+a:hover { text-decoration: underline; color: #F75696; }
+.link1 { color: #ffffff; }
+.link1:visited { text-decoration: none; color: #ffffff; }
+.link1:link {  text-decoration: none; color: #ffffff;}
+.link1:hover { text-decoration: none; color: #ff9461; }
+.td_bottom { font-size:11px; font-weight:bold;}
+a img { border: none;}
+form { margin-bottom: 0px; margin-top: 0px;}
+.white { color: #ffffff }
+a.white:active { text-decoration: none; color: #ffffff; }
+a.white:visited {text-decoration: none; color: #ffffff;}
+a.white:link {  text-decoration: none; color: #ffffff; }
+a.white:hover { text-decoration: underline; color: #ffffff; }
+.small { font-size: 11px;}
+.smaller { font-size: 11px; }
+.orange { color:#F75696; }
+.gri { color: #2f2f2f;}
+.para {padding: 11px;}
+a.gri:active { text-decoration: none; color: #2f2f2f; }
+a.gri:visited { text-decoration: none; color: #2f2f2f; }
+a.gri:link {  text-decoration: none; color: #2f2f2f; }
+a.gri:hover { text-decoration: underline; color: #F75696; }
+.t30 { font-size:24px; color:#F75696; font-weight:bold; }
+.t14 { font-size:15px; color:#F75696; font-weight:bold; }
+.t10 { font-size:12px; color:#F75696; font-weight:bold; }
+.t11 { font-size:12px; color:#F75696;}
+.ti13 { font-size:13px; }
+.catorange { font-size:14px; color:#F75696; font-weight:bold; }
+.catorange_two { font-size:12px; color:#F75696; font-weight:bold;}
+.quicklinks { font-size:12px; line-height: 1.1;color:#000000; font-weight:normal;}
+.quicklinks a { font-size:12px; color:#F75696; font-weight:normal; }
+.quicklinks a:active { text-decoration: underline; color: #F75696; }
+.quicklinks a:visited { text-decoration: underline; color: #F75696; }
+.quicklinks a:link {  text-decoration: underline; color: #F75696;}
+.quicklinks a:hover { text-decoration: underline; color: #F75696;}
+.quicklinkstr { height: 1px; color: #ddd; background-color: #ddd; width:90%}
+.link1 { color: #ffffff;}
+.link1:visited { text-decoration: none; color: #ffffff;}
+.link1:link {  text-decoration: none; color: #ffffff;}
+.link1:hover { text-decoration: none; color: #FDD0E2;}
+#footer { border-top: 1px dotted #c0c0c0;}
+div.disabled { display: inline; float: none; clear: none; color: #C0C0C0;}
+.horizontalcssmenu ul{ position: relative; display: inline; list-style-type:none;margin:0pt;padding:0pt; }
+.horizontalcssmenu ul li{float: left; padding-left:22px; font-weight: bold; height: 18px }
+.horizontalcssmenu ul li.digg{background:transparent url(/img/digg.gif) no-repeat scroll 0% 0%; }
+.horizontalcssmenu ul li.deli{background:transparent url(/img/delicious.gif) no-repeat scroll 0% 0%; margin-left: 11px}
+.horizontalcssmenu ul li.face{background:transparent url(/img/facebook.gif) no-repeat scroll 0% 0%; margin-left: 11px}
+.horizontalcssmenu ul li.stum{background:transparent url(/img/stumbleupon.gif) no-repeat scroll 0% 0%; margin-left: 11px}
+
+td { text-align: left; }
+
+/* Notices and Errors */
+div.message {
+	clear: both;
+	color: #900;
+	font-size: 140%;
+	font-weight: bold;
+	margin: 1em 0;
+}
+div.error-message {
+	clear: both;
+	color: #900;
+	font-weight: normal;
+}
+p.error {
+	background-color: #e32;
+	color: #fff;
+	font-family: Courier, monospace;
+	font-size: 120%;
+	line-height: 140%;
+	padding: 0.8em;
+	margin: 1em 0;
+}
+p.error em {
+	color: #000;
+	font-weight: normal;
+	line-height: 140%;
+}
+.notice {
+	background: #ffcc00;
+	color: #000;
+	display: block;
+	font-family: Courier, monospace;
+	font-size: 120%;
+	line-height: 140%;
+	padding: 0.8em;
+	margin: 1em 0;
+}
+.success {
+	background: green;
+	color: #fff;
+}
+
+
+
+
+#faqs { padding: 8px; }
+.faq_items { padding-left: 5px; }
+ol.faq ,ul.faq { padding: 10px;  margin-left: 20px; line-height:15px ;}
+
+
+/* Tables */
+table.tracking {
+	background: #fff;
+	border-right:0;
+	clear: both;
+	color: #333;
+	margin-bottom: 10px;
+	width: 100%;
+}
+th {
+	background: #f2f2f2;
+	border:1px solid #bbb;
+	border-top: 1px solid #fff;
+	border-left: 1px solid #fff;
+	text-align: center;
+}
+th a {
+	background:#f2f2f2;
+	display: block;
+	padding: 2px 4px;
+	text-decoration: none;
+}
+th a:hover {
+	background: #ccc;
+	color: #333;
+	text-decoration: none;
+}
+table.tracking tr td {
+	background: #fff;
+	padding: 4px;
+	vertical-align: top;
+	text-align:center;
+}
+
+#flashMessage {
+  text-align: center;
+}
+div.input {
+  padding: 4px;
+}
+label {
+  display: block;
+}
+.contact {
+  padding:5px !important;
+  background:#FFFEEE url(/img/form-back.gif) repeat-x scroll 0 0;
+  border:1px solid #81ABB9;
+  color:#333333;
+  font-size:126%;
+  font-family: verdana;
+}
+div.required label:after {
+  content: ' *';
+  color: #990000;
+  display:inline;
+}
+.error-message {
+  color:#CC2211;
+  font-size:86%;
+  padding:2px 0;
+  width: 75%;
+}
+
+.note {
+  width: 75%;
+  margin:0.5em 0 0.25em;
+  padding:4px 6px 6px 4px;
+}
+
+#flashMessage {
+  background:#FEFFE0 url(/img/icons/information.png) no-repeat scroll 4px 4px;
+  border:1px solid #444444;
+  color:#444444;
+  font-family:Verdana,Lucida,Helvetica,Arial,sans-serif;
+  font-weight:normal;
+  padding:4px 6px 6px 25px;
+  font-size:86%;
+  text-align: left;
+}
+
+div.required label {
+  font-weight: bold;
+}
+.form-error {
+  background:#FFCCCC;
+  border:1px solid #DD6600;
+  margin:0.5em 0 0.25em;
+}
+.submit {
+  padding: 4px;
+}
+.profile {
+  padding: 5px;
+}
+.field_info {
+  color: #FF0000;
+  font-size: 10px;
+}
+.twitter {
+	margin: 0px; 
+	padding: 0px; 
+	position: absolute; 
+	left: 0px; 
+	top: 0px;
+}
