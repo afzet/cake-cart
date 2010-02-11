@@ -48,6 +48,8 @@ class CategoryController extends AppController {
 			);		
 			
 		$data = $this->paginate('Product');
+		
+		if (count($data) == 0) $this->redirect('/', null, false);
 		$this->set(compact('data'));
 	}   
 

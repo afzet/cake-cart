@@ -47,6 +47,7 @@ class CategoryController extends AppController {
 				'recursive' => 0
 			);		
 			
+		if (count($data) == 0) $this->redirect('/', null, false);
 		$data = $this->paginate('Product');
 		$this->set(compact('data'));
 	}   
