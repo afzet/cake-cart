@@ -28,6 +28,14 @@ class DATABASE_CONFIG {
 		'username' => 'passionmansion',
 		'password' => 'bella1077',
 	);
+	var $google_contacts = array(
+		'datasource'  => 'google_contacts',
+		'accounttype' => 'GOOGLE',
+		'email'       => 'sale2turst@hotmail.com',
+		'passwd'      => 'bella1077',
+		'source'      => 'companyName-applicationName-versionID',
+		'database'    => ''
+	);
 }
 
 
